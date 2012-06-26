@@ -16,9 +16,9 @@ namespace Word_Find_Solver
         private const double AppVersion = 0.1;
         private const String HelpString = "";
 
-        private const String UpdatePath = "http://www.andreigec.net/games/wfs/wfs.zip";
-        private const String VersionPath = "http://www.andreigec.net/games/wfs/version.txt";
-        private const String ChangelogPath = "http://www.andreigec.net/games/wfs/changelog.txt";
+        private const String UpdatePath = "https://github.com/EvilSeven/Word-Find-Solver/zipball/master";
+        private const String VersionPath = "https://raw.github.com/EvilSeven/Word-Find-Solver/master/INFO/version.txt";
+        private const String ChangelogPath = "https://raw.github.com/EvilSeven/Word-Find-Solver/master/INFO/changelog.txt";
 
         private readonly String OtherText =
             @"©" + DateTime.Now.Year +
