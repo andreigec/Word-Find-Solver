@@ -1,0 +1,2 @@
+Word Find Solver solves crosswords by finding all words from a dictionary.
+Also contains a mode that can be used to solve the game "SpellTower", where words can go in any direction from the last letter.
