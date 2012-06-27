@@ -13,7 +13,7 @@ namespace Word_Find_Solver
         #region licensing
 
         private const string AppTitle = "Word Find Solver";
-        private const double AppVersion = 0.1;
+        private const double AppVersion = 0.2;
         private const String HelpString = "";
 
         private const String UpdatePath = "https://github.com/EvilSeven/Word-Find-Solver/zipball/master";
