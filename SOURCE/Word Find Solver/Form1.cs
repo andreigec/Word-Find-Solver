@@ -288,7 +288,7 @@ Zip Assets © SharpZipLib (http://www.sharpdevelop.net/OpenSource/SharpZipLib/)
 
                 InitGrid(str.Item3);
             }
-            catch (ArgumentException ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("error:" + ex);
                 return;
