@@ -1,5 +1,6 @@
 version 0.4
-added image to grid option using tesseract OCR
+added image to grid option using tesseract OCR.
+Note: OCR isn't perfect - may need to replace a few characters, such as Q/O and N/M
 
 Version 0.2
 Changed to use GITHub
