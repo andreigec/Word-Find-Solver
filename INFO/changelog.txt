@@ -1,3 +1,6 @@
+version 0.4
+added image to grid option using tesseract OCR
+
 Version 0.2
 Changed to use GITHub
 

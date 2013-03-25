@@ -13,7 +13,7 @@ namespace Word_Find_Solver
         #region licensing
 
         private const string AppTitle = "Word Find Solver";
-        private const double AppVersion = 0.2;
+        private const double AppVersion = 0.4;
         private const String HelpString = "";
 
         private const String UpdatePath = "https://github.com/EvilSeven/Word-Find-Solver/zipball/master";
@@ -26,6 +26,7 @@ namespace Word_Find_Solver
 
 Licensed under GNU LGPL (http://www.gnu.org/)
 
+OCR © Tessnet2/Tesseract (http://www.pixel-technology.com/freeware/tessnet2/)(https://code.google.com/p/tesseract-ocr/)
 Zip Assets © SharpZipLib (http://www.sharpdevelop.net/OpenSource/SharpZipLib/)
 ";
         #endregion
@@ -46,10 +47,10 @@ Zip Assets © SharpZipLib (http://www.sharpdevelop.net/OpenSource/SharpZipLib/)
             int h = MinimumSize.Height;
 
             int lx = Grid.GetLastTextbox().Location.X;
-            lx += 240;
+            lx += 340;
 
             int ly = Grid.GetLastTextbox().Location.Y;
-            ly += 280;
+            ly += 380;
 
             if (lx > w)
                 w = lx;
@@ -74,7 +75,9 @@ Zip Assets © SharpZipLib (http://www.sharpdevelop.net/OpenSource/SharpZipLib/)
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Licensing.CreateLicense(this, HelpString, AppTitle, AppVersion, OtherText, VersionPath, UpdatePath, ChangelogPath, menuStrip1);
+            var sd = new Licensing.SolutionDetails(HelpString, AppTitle, AppVersion, OtherText, VersionPath, UpdatePath,
+                                                   ChangelogPath);
+            Licensing.CreateLicense(this, sd, menuStrip1);
             Grid.baseform = this;
             Grid.InitPanel(grid);
             Grid.InitWords();
@@ -241,12 +244,12 @@ Zip Assets © SharpZipLib (http://www.sharpdevelop.net/OpenSource/SharpZipLib/)
 
         private void createwidthTB_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = TextboxUpdates.HandleInput(TextboxUpdates.InputType.Create(false,true), e.KeyChar,createwidthTB);
+            e.Handled = TextboxExtras.HandleInput(TextboxExtras.InputType.Create(false, true), e.KeyChar, createwidthTB);
         }
 
         private void createheightTB_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = TextboxUpdates.HandleInput(TextboxUpdates.InputType.Create(false, true), e.KeyChar, createheightTB);
+            e.Handled = TextboxExtras.HandleInput(TextboxExtras.InputType.Create(false, true), e.KeyChar, createheightTB);
         }
 
         private void sortnamebutton_Click(object sender, EventArgs e)
@@ -260,6 +263,36 @@ Zip Assets © SharpZipLib (http://www.sharpdevelop.net/OpenSource/SharpZipLib/)
             Grid.RandomiseLetters(GetFindMode());
             Solve();
             ApplySolve();
+        }
+
+        private void loadLettersFromImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void loadfromimageB_Click(object sender, EventArgs e)
+        {
+            var ofd = new OpenFileDialog();
+            ofd.InitialDirectory = Environment.CurrentDirectory;
+            ofd.Filter = "|*.*";
+            ofd.Title = "choose file to load letters from";
+            var res = ofd.ShowDialog();
+            if (res != DialogResult.OK)
+                return;
+
+            Bitmap b;
+            try
+            {
+                b = new Bitmap(ofd.FileName);
+                var str = OCR.LoadImage(b,whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem.Checked);
+
+                InitGrid(str.Item3);
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show("error:" + ex);
+                return;
+            }
         }
     }
 }

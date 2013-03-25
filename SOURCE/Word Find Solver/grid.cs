@@ -15,7 +15,7 @@ namespace Word_Find_Solver
         private static int width;
         private static int height;
         private static char[][] grid;
-        private static PanelUpdates PU;
+        private static PanelReplacement PU;
         private static Color normalback = Color.CornflowerBlue;
         private static Color normalfront = Color.Yellow;
         private static Color findback = Color.Yellow;
@@ -87,7 +87,7 @@ namespace Word_Find_Solver
             NotSet, Down, DownLeft, Left, UpLeft, Up, UpRight, Right, DownRight
         }
 
-        public static void InitPanel(PanelUpdates pu)
+        public static void InitPanel(PanelReplacement pu)
         {
             PU = pu;
         }
@@ -166,6 +166,8 @@ namespace Word_Find_Solver
                 {
                     for (int x = 0; x < widthI; x++)
                     {
+                        if (x >= rows[y].Length)
+                            break;
                         if (rows[y].Length >= x)
                             grid[y][x] = rows[y][x].ToString().ToUpper()[0];
                     }
