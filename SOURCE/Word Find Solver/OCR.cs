@@ -11,36 +11,7 @@ namespace Word_Find_Solver
 {
     public static class OCR
     {
-        /// <summary>
-        /// replace all colours apart from the one passed in with white, and the passed in colour as black
-        /// </summary>
-        /// <param name="Bmp"></param>
-        /// <param name="r"></param>
-        /// <param name="g"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
-        public static Bitmap OnlyAllowBlackAndColour(Bitmap Bmp, int r, int g, int b)
-        {
-            //int rgb;
-            Color c;
-
-            for (int y = 0; y < Bmp.Height; y++)
-                for (int x = 0; x < Bmp.Width; x++)
-                {
-                    c = Bmp.GetPixel(x, y);
-                    int rgb = 255;
-                    const int blackd = 50;
-                    if ((c.R <= blackd && c.G <= blackd && c.B <= blackd) || (c.R == r && c.G == g && c.B == b))
-                    {
-                        rgb = 0;
-                    }
-                    //rgb = (int)((c.R + c.G + c.B) / 3);
-                    Bmp.SetPixel(x, y, Color.FromArgb(rgb, rgb, rgb));
-                }
-            return Bmp;
-        }
-      
-        /// <summary>
+       /// <summary>
         /// return avg x,avg y,max x, max y (max rules out outliers)
         /// </summary>
         /// <param name="words"></param>
@@ -218,24 +189,15 @@ namespace Word_Find_Solver
             return ret;
         }
 
-        public static Tuple<int, int, string[]> LoadImage(Bitmap image1, bool IgnorePartY)
+        public static Tuple<int, int, string[]> LoadImage(Bitmap image1)
         {
             Bitmap image = image1;
-            //crop a bit if wanted
-            if (IgnorePartY)
-            {
-                var rect = new Rectangle(0, 100, image1.Width, image1.Height - 100);
-                image = image1.Clone(rect, PixelFormat.DontCare);
-            }
-
-            //only get letters
-            image = OnlyAllowBlackAndColour(image, 0, 0, 0);
 
             //expand
             image=BitmapExtras.ResizeBitmap(image, (int) (image.Width * .7), (int) (image.Height * .7));
 
             var ocr = new tessnet2.Tesseract();
-            ocr.SetVariable("tessedit_char_whitelist", "0123456789ABCDEFGHIJKLMOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
+            ocr.SetVariable("tessedit_char_whitelist", "ABCDEFGHIJKLMOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
             ocr.Init(null, "eng", false);
             var result = ocr.DoOCR(image, Rectangle.Empty);
 

@@ -1,4 +1,6 @@
-﻿namespace Word_Find_Solver
+﻿using ANDREICSLIB;
+
+namespace Word_Find_Solver
 {
     partial class Form1
     {
@@ -28,11 +30,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadLettersFromImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tesseractOCRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.histogramOCRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadwordgrid = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.loadfromimageB = new System.Windows.Forms.Button();
@@ -44,7 +54,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.clearbutton = new System.Windows.Forms.Button();
             this.savebutton = new System.Windows.Forms.Button();
-            this.foundwords = new System.Windows.Forms.ListBox();
             this.manualentry = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -52,16 +61,20 @@
             this.crosswordRB = new System.Windows.Forms.RadioButton();
             this.sortlengthbutton = new System.Windows.Forms.Button();
             this.sortscorebutton = new System.Windows.Forms.Button();
-            this.grid = new ANDREICSLIB.PanelReplacement();
             this.label4 = new System.Windows.Forms.Label();
             this.sortnamebutton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.foundwordsLB = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.grid = new ANDREICSLIB.PanelReplacement();
+            this.GridLetterContext = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.changeMultiplierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.GridLetterContext.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -73,7 +86,7 @@
             this.optionsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(441, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(418, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -107,6 +120,55 @@
             this.loadLettersFromImageToolStripMenuItem.Text = "Load letters from image";
             this.loadLettersFromImageToolStripMenuItem.Click += new System.EventHandler(this.loadLettersFromImageToolStripMenuItem_Click);
             // 
+            // optionsToolStripMenuItem
+            // 
+            this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.toolStripMenuItem1});
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.optionsToolStripMenuItem.Text = "Options";
+            // 
+            // whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem
+            // 
+            this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem.Checked = true;
+            this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem.CheckOnClick = true;
+            this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem.Name = "whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem";
+            this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem.Size = new System.Drawing.Size(312, 22);
+            this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem.Text = "When loading image, ignore top bit of image";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(309, 6);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tesseractOCRToolStripMenuItem,
+            this.histogramOCRToolStripMenuItem});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(312, 22);
+            this.toolStripMenuItem1.Text = "OCRMethod";
+            // 
+            // tesseractOCRToolStripMenuItem
+            // 
+            this.tesseractOCRToolStripMenuItem.Name = "tesseractOCRToolStripMenuItem";
+            this.tesseractOCRToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.tesseractOCRToolStripMenuItem.Text = "Tesseract OCR";
+            this.tesseractOCRToolStripMenuItem.Click += new System.EventHandler(this.tesseractOCRToolStripMenuItem_Click);
+            // 
+            // histogramOCRToolStripMenuItem
+            // 
+            this.histogramOCRToolStripMenuItem.Checked = true;
+            this.histogramOCRToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.histogramOCRToolStripMenuItem.Name = "histogramOCRToolStripMenuItem";
+            this.histogramOCRToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.histogramOCRToolStripMenuItem.Text = "Histogram OCR";
+            this.histogramOCRToolStripMenuItem.Click += new System.EventHandler(this.histogramOCRToolStripMenuItem_Click);
+            // 
             // loadwordgrid
             // 
             this.loadwordgrid.Location = new System.Drawing.Point(6, 48);
@@ -133,7 +195,7 @@
             this.groupBox1.Controls.Add(this.loadwordgrid);
             this.groupBox1.Location = new System.Drawing.Point(12, 37);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(417, 106);
+            this.groupBox1.Size = new System.Drawing.Size(394, 106);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Step 1: Load or create word grid";
@@ -224,21 +286,10 @@
             this.savebutton.UseVisualStyleBackColor = true;
             this.savebutton.Click += new System.EventHandler(this.savebutton_Click);
             // 
-            // foundwords
-            // 
-            this.foundwords.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.foundwords.FormattingEnabled = true;
-            this.foundwords.Location = new System.Drawing.Point(244, 82);
-            this.foundwords.Name = "foundwords";
-            this.foundwords.Size = new System.Drawing.Size(159, 173);
-            this.foundwords.TabIndex = 5;
-            this.foundwords.SelectedIndexChanged += new System.EventHandler(this.foundwords_SelectedIndexChanged);
-            // 
             // manualentry
             // 
             this.manualentry.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.manualentry.Location = new System.Drawing.Point(241, 298);
+            this.manualentry.Location = new System.Drawing.Point(218, 314);
             this.manualentry.Name = "manualentry";
             this.manualentry.Size = new System.Drawing.Size(159, 20);
             this.manualentry.TabIndex = 6;
@@ -248,7 +299,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(241, 7);
+            this.label1.Location = new System.Drawing.Point(218, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(93, 13);
             this.label1.TabIndex = 8;
@@ -262,7 +313,7 @@
             this.groupBox2.Controls.Add(this.crosswordRB);
             this.groupBox2.Location = new System.Drawing.Point(12, 149);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(417, 48);
+            this.groupBox2.Size = new System.Drawing.Size(394, 48);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Step 2:Method for finding words";
@@ -294,7 +345,7 @@
             // sortlengthbutton
             // 
             this.sortlengthbutton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sortlengthbutton.Location = new System.Drawing.Point(244, 30);
+            this.sortlengthbutton.Location = new System.Drawing.Point(221, 30);
             this.sortlengthbutton.Name = "sortlengthbutton";
             this.sortlengthbutton.Size = new System.Drawing.Size(75, 23);
             this.sortlengthbutton.TabIndex = 10;
@@ -305,13 +356,81 @@
             // sortscorebutton
             // 
             this.sortscorebutton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sortscorebutton.Location = new System.Drawing.Point(325, 30);
+            this.sortscorebutton.Location = new System.Drawing.Point(302, 30);
             this.sortscorebutton.Name = "sortscorebutton";
             this.sortscorebutton.Size = new System.Drawing.Size(75, 23);
             this.sortscorebutton.TabIndex = 11;
             this.sortscorebutton.Text = "Sort Score";
             this.sortscorebutton.UseVisualStyleBackColor = true;
             this.sortscorebutton.Click += new System.EventHandler(this.sortscorebutton_Click);
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(218, 298);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(82, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Manual Search:";
+            // 
+            // sortnamebutton
+            // 
+            this.sortnamebutton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.sortnamebutton.Location = new System.Drawing.Point(221, 56);
+            this.sortnamebutton.Name = "sortnamebutton";
+            this.sortnamebutton.Size = new System.Drawing.Size(156, 23);
+            this.sortnamebutton.TabIndex = 13;
+            this.sortnamebutton.Text = "Sort Alphabet";
+            this.sortnamebutton.UseVisualStyleBackColor = true;
+            this.sortnamebutton.Click += new System.EventHandler(this.sortnamebutton_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.foundwordsLB);
+            this.panel1.Controls.Add(this.grid);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.sortnamebutton);
+            this.panel1.Controls.Add(this.sortscorebutton);
+            this.panel1.Controls.Add(this.manualentry);
+            this.panel1.Controls.Add(this.sortlengthbutton);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(12, 203);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(392, 344);
+            this.panel1.TabIndex = 14;
+            // 
+            // foundwordsLB
+            // 
+            this.foundwordsLB.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.foundwordsLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.foundwordsLB.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.foundwordsLB.FullRowSelect = true;
+            this.foundwordsLB.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.foundwordsLB.HideSelection = false;
+            this.foundwordsLB.Location = new System.Drawing.Point(222, 85);
+            this.foundwordsLB.MultiSelect = false;
+            this.foundwordsLB.Name = "foundwordsLB";
+            this.foundwordsLB.Size = new System.Drawing.Size(155, 210);
+            this.foundwordsLB.TabIndex = 14;
+            this.foundwordsLB.UseCompatibleStateImageBehavior = false;
+            this.foundwordsLB.View = System.Windows.Forms.View.Details;
+            this.foundwordsLB.SelectedIndexChanged += new System.EventHandler(this.foundwordsLB_SelectedIndexChanged);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Word";
+            this.columnHeader1.Width = 90;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Score";
             // 
             // grid
             // 
@@ -323,74 +442,34 @@
             this.grid.BorderWidth = 0;
             this.grid.Location = new System.Drawing.Point(9, 7);
             this.grid.Name = "grid";
-            this.grid.Size = new System.Drawing.Size(226, 311);
+            this.grid.Size = new System.Drawing.Size(203, 327);
             this.grid.TabIndex = 4;
             // 
-            // label4
+            // GridLetterContext
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(241, 282);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(82, 13);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Manual Search:";
+            this.GridLetterContext.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.changeMultiplierToolStripMenuItem});
+            this.GridLetterContext.Name = "GridLetterContext";
+            this.GridLetterContext.Size = new System.Drawing.Size(170, 26);
+            this.GridLetterContext.Opening += new System.ComponentModel.CancelEventHandler(this.GridLetterContext_Opening);
             // 
-            // sortnamebutton
+            // changeMultiplierToolStripMenuItem
             // 
-            this.sortnamebutton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sortnamebutton.Location = new System.Drawing.Point(244, 56);
-            this.sortnamebutton.Name = "sortnamebutton";
-            this.sortnamebutton.Size = new System.Drawing.Size(75, 23);
-            this.sortnamebutton.TabIndex = 13;
-            this.sortnamebutton.Text = "Sort Name";
-            this.sortnamebutton.UseVisualStyleBackColor = true;
-            this.sortnamebutton.Click += new System.EventHandler(this.sortnamebutton_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.grid);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.sortnamebutton);
-            this.panel1.Controls.Add(this.sortscorebutton);
-            this.panel1.Controls.Add(this.manualentry);
-            this.panel1.Controls.Add(this.sortlengthbutton);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.foundwords);
-            this.panel1.Location = new System.Drawing.Point(12, 203);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(415, 328);
-            this.panel1.TabIndex = 14;
-            // 
-            // optionsToolStripMenuItem
-            // 
-            this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem});
-            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.optionsToolStripMenuItem.Text = "Options";
-            // 
-            // whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem
-            // 
-            this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem.Checked = true;
-            this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem.CheckOnClick = true;
-            this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem.Name = "whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem";
-            this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem.Size = new System.Drawing.Size(312, 22);
-            this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem.Text = "When loading image, ignore top bit of image";
+            this.changeMultiplierToolStripMenuItem.Name = "changeMultiplierToolStripMenuItem";
+            this.changeMultiplierToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.changeMultiplierToolStripMenuItem.Text = "Change Multiplier";
+            this.changeMultiplierToolStripMenuItem.Click += new System.EventHandler(this.changeMultiplierToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(441, 547);
+            this.ClientSize = new System.Drawing.Size(418, 563);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(430, 530);
             this.Name = "Form1";
@@ -405,6 +484,7 @@
             this.groupBox2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.GridLetterContext.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -418,7 +498,6 @@
         private System.Windows.Forms.Button loadwordgrid;
         private System.Windows.Forms.GroupBox groupBox1;
         private ANDREICSLIB.PanelReplacement grid;
-        private System.Windows.Forms.ListBox foundwords;
         private System.Windows.Forms.TextBox manualentry;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -442,6 +521,15 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem tesseractOCRToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem histogramOCRToolStripMenuItem;
+        public System.Windows.Forms.ContextMenuStrip GridLetterContext;
+        private System.Windows.Forms.ToolStripMenuItem changeMultiplierToolStripMenuItem;
+        private System.Windows.Forms.ListView foundwordsLB;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
     }
 }
 

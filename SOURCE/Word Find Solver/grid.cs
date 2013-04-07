@@ -1,44 +1,76 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using ANDREICSLIB;
+using ANDREICSLIB.ClassExtras;
 
 namespace Word_Find_Solver
 {
     public static class Grid
     {
-        public static Form1 baseform;
+        public class GridPoint
+        {
+            public TextBox Tb;
+            public char C;
+            public int LetterMultiplier = 1;
+            public int WordMultiplierExtra = 0;
+            public int X;
+            public int Y;
+
+            public GridPoint()
+            {
+
+            }
+
+            public GridPoint(char c, TextBox tb, int x, int y)
+            {
+                X = x;
+                Y = y;
+                Tb = tb;
+                C = c;
+            }
+
+            public GridPoint(TextBox tb, int x, int y)
+            {
+                Tb = tb;
+                X = x;
+                Y = y;
+            }
+        }
+
+        public static Form1 Baseform;
         private static int width;
         private static int height;
-        private static char[][] grid;
-        private static PanelReplacement PU;
-        private static Color normalback = Color.CornflowerBlue;
-        private static Color normalfront = Color.Yellow;
-        private static Color findback = Color.Yellow;
-        private static Color findfront = Color.CornflowerBlue;
+        /// <summary>
+        /// a textbox/char for each grid point
+        /// </summary>
+        private static GridPoint[][] grid;
+        private static PanelReplacement pu;
+        private static readonly Color Normalback = Color.CornflowerBlue;
+        private static readonly Color Normalfront = Color.Yellow;
+        private static readonly Color Findback = Color.Yellow;
+        private static readonly Color Findfront = Color.CornflowerBlue;
         private static Trie trieroot;
-        private static Dictionary<char, int> LetterScores = new Dictionary<char, int>();
-        private static Random r = new Random();
-        private static bool AvoidUpdate = false;
+        private static Dictionary<char, int> letterScores = new Dictionary<char, int>();
+        private static readonly Random R = new Random();
+
         /// <summary>
         /// direction to an x,y tuple for relative direction
         /// </summary>
-        private static Dictionary<Direction, Tuple<int, int>> Directions;
+        private static Dictionary<Direction, Tuple<int, int>> directions;
 
-        private static Direction GetDirection(TextBox basetb, TextBox comptb)
+        private static Direction GetDirection(GridPoint basetb, GridPoint comptb)
         {
-            var basep = GetControlPos(basetb);
-            var compp = GetControlPos(comptb);
-
-            int xrel = compp.Item1 - basep.Item1;
-            int yrel = compp.Item2 - basep.Item2;
+            int xrel = comptb.X - basetb.X;
+            int yrel = comptb.Y - basetb.Y;
 
             var t = new Tuple<int, int>(xrel, yrel);
-            var d = Directions.Where(s => s.Value.Equals(t));
+            var d = directions.Where(s => s.Value.Equals(t));
 
             if (d.Count() == 1)
                 return d.First().Key;
@@ -48,8 +80,8 @@ namespace Word_Find_Solver
 
         private static char GenNewLetter(int max)
         {
-            int current = r.Next() % max;
-            foreach (var kvp in LetterScores)
+            int current = R.Next() % max;
+            foreach (var kvp in letterScores)
             {
                 if (current < kvp.Value)
                     return kvp.Key;
@@ -60,41 +92,50 @@ namespace Word_Find_Solver
 
         public static void RandomiseLetters(FindMode fm)
         {
-            AvoidUpdate = true;
             //create stack
-            int max = LetterScores.Sum(s => s.Value);
+            int max = letterScores.Sum(s => s.Value);
 
             for (int y = 0; y < height; y++)
             {
                 for (int x = 0; x < width; x++)
                 {
-                    grid[y][x] = GenNewLetter(max);
-                    var tb = GetControl(x, y);
-                    tb.Text = grid[y][x].ToString();
-                    ChangeTextBoxValue(tb);
+                    var c = GenNewLetter(max);
+                    grid[y][x].C = c;
+                    grid[y][x].Tb.Text = c.ToString();
                 }
             }
-            AvoidUpdate = false;
         }
 
         public enum FindMode
         {
-            NotSet, Crossword, AllDirFromLast
+            NotSet,
+            Crossword,
+            AllDirFromLast
         }
 
         public enum Direction
         {
-            NotSet, Down, DownLeft, Left, UpLeft, Up, UpRight, Right, DownRight
+            NotSet,
+            Down,
+            DownLeft,
+            Left,
+            UpLeft,
+            Up,
+            UpRight,
+            Right,
+            DownRight
         }
 
         public static void InitPanel(PanelReplacement pu)
         {
-            PU = pu;
+            Grid.pu = pu;
         }
 
         public static void InitWords()
         {
-            var raw = EmbeddedResources.ReadEmbeddedResource("dictionarywords.txt").Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+            var raw = EmbeddedResources.ReadEmbeddedResource("dictionarywords.txt").Split(new[] { "\r\n" },
+                                                                                          StringSplitOptions.
+                                                                                              RemoveEmptyEntries);
             trieroot = new Trie();
             foreach (var s in raw)
             {
@@ -102,52 +143,49 @@ namespace Word_Find_Solver
             }
 
             //add relative directions
-            Directions = new Dictionary<Direction, Tuple<int, int>>();
-            Directions.Add(Direction.NotSet, new Tuple<int, int>(0, 0));
-
-            Directions.Add(Direction.DownLeft, new Tuple<int, int>(-1, +1));
-            Directions.Add(Direction.Left, new Tuple<int, int>(-1, +0));
-            Directions.Add(Direction.UpLeft, new Tuple<int, int>(-1, -1));
-            Directions.Add(Direction.Up, new Tuple<int, int>(+0, -1));
-            Directions.Add(Direction.UpRight, new Tuple<int, int>(+1, -1));
-            Directions.Add(Direction.Right, new Tuple<int, int>(+1, +0));
-            Directions.Add(Direction.DownRight, new Tuple<int, int>(+1, +1));
-            Directions.Add(Direction.Down, new Tuple<int, int>(+0, +1));
+            directions = new Dictionary<Direction, Tuple<int, int>>
+                             {
+                                 {Direction.NotSet, new Tuple<int, int>(0, 0)},
+                                 {Direction.DownLeft, new Tuple<int, int>(-1, +1)},
+                                 {Direction.Left, new Tuple<int, int>(-1, +0)},
+                                 {Direction.UpLeft, new Tuple<int, int>(-1, -1)},
+                                 {Direction.Up, new Tuple<int, int>(+0, -1)},
+                                 {Direction.UpRight, new Tuple<int, int>(+1, -1)},
+                                 {Direction.Right, new Tuple<int, int>(+1, +0)},
+                                 {Direction.DownRight, new Tuple<int, int>(+1, +1)},
+                                 {Direction.Down, new Tuple<int, int>(+0, +1)}
+                             };
 
             //letter scores
-            LetterScores = new Dictionary<char, int>();
-            LetterScores.Add('A', 1);
-            LetterScores.Add('B', 3);
-            LetterScores.Add('C', 3);
-            LetterScores.Add('D', 2);
-            LetterScores.Add('E', 1);
-            LetterScores.Add('F', 4);
-            LetterScores.Add('G', 2);
-            LetterScores.Add('H', 4);
-            LetterScores.Add('I', 1);
-            LetterScores.Add('J', 8);
-            LetterScores.Add('K', 5);
-            LetterScores.Add('L', 1);
-            LetterScores.Add('M', 3);
-            LetterScores.Add('N', 1);
-            LetterScores.Add('O', 1);
-            LetterScores.Add('P', 3);
-            LetterScores.Add('Q', 10);
-            LetterScores.Add('R', 1);
-            LetterScores.Add('S', 1);
-            LetterScores.Add('T', 1);
-            LetterScores.Add('U', 1);
-            LetterScores.Add('V', 4);
-            LetterScores.Add('W', 4);
-            LetterScores.Add('X', 8);
-            LetterScores.Add('Y', 4);
-            LetterScores.Add('Z', 10);
-        }
-
-        public static int GetWordScore(String s)
-        {
-            int score = s.Sum(b => LetterScores[b]);
-            return score;
+            letterScores = new Dictionary<char, int>
+                               {
+                                   {'A', 1},
+                                   {'B', 3},
+                                   {'C', 3},
+                                   {'D', 2},
+                                   {'E', 1},
+                                   {'F', 4},
+                                   {'G', 2},
+                                   {'H', 4},
+                                   {'I', 1},
+                                   {'J', 8},
+                                   {'K', 5},
+                                   {'L', 1},
+                                   {'M', 3},
+                                   {'N', 1},
+                                   {'O', 1},
+                                   {'P', 3},
+                                   {'Q', 10},
+                                   {'R', 1},
+                                   {'S', 1},
+                                   {'T', 1},
+                                   {'U', 1},
+                                   {'V', 4},
+                                   {'W', 4},
+                                   {'X', 8},
+                                   {'Y', 4},
+                                   {'Z', 10}
+                               };
         }
 
         /// <summary>
@@ -158,30 +196,63 @@ namespace Word_Find_Solver
         /// <param name="rows"></param>
         public static void InitGrid(int widthI, int heightI, string[] rows = null)
         {
-            grid = new char[heightI][];
+            width = widthI;
+            height = heightI;
+
+            pu.clearControls();
+            grid = new GridPoint[heightI][];
+            var f = new Font(FontFamily.GenericSansSerif, 20, FontStyle.Regular);
+
             for (var y = 0; y < heightI; y++)
             {
-                grid[y] = new char[widthI];
-                if (rows != null)
+                grid[y] = new GridPoint[widthI];
+
+                for (int x = 0; x < widthI; x++)
                 {
-                    for (int x = 0; x < widthI; x++)
+                    //create the grid point and textbox
+                    var tb = new TextBox
+                    {
+                        Width = 30,
+                        Height = 16,
+                        BorderStyle = BorderStyle.None,
+                        BackColor = Normalback,
+                        ForeColor = Normalfront,
+                        MaxLength = 1,
+                        ContextMenuStrip = Baseform.GridLetterContext,
+                        TextAlign = HorizontalAlignment.Center,
+                        Font = f,
+                        //x,y
+                        Name = x + "," + y,
+                    };
+                    tb.TextChanged += Baseform.GridTBChangeEvent;
+                    pu.addControl(tb, x != (width - 1));
+                    grid[y][x] = new GridPoint(tb, x, y);
+
+                    //if text has been passed in, set the text now
+                    if (rows != null)
                     {
                         if (x >= rows[y].Length)
                             break;
                         if (rows[y].Length >= x)
-                            grid[y][x] = rows[y][x].ToString().ToUpper()[0];
+                        {
+                            var c = rows[y][x].ToString(CultureInfo.InvariantCulture).ToUpper()[0];
+                            grid[y][x].C = c;
+                            grid[y][x].Tb.Text = c.ToString(CultureInfo.InvariantCulture);
+                        }
                     }
                 }
             }
-            width = widthI;
-            height = heightI;
-
-            CreatePanel();
         }
 
+
+        /// <summary>
+        /// get the very last textbox for panel resize
+        /// </summary>
+        /// <returns></returns>
         public static TextBox GetLastTextbox()
         {
-            return GetControl(width - 1, height - 1);
+            var gp = grid[height - 1][width - 1];
+            return gp.Tb;
         }
 
         public static void Clear()
@@ -202,7 +273,7 @@ namespace Word_Find_Solver
             var sw = new StreamWriter(fs);
             for (int y = 0; y < height; y++)
             {
-                var s = new string(grid[y]);
+                var s = grid[y].Aggregate("", (a, b) => a + b.C);
                 sw.WriteLine(s);
             }
             sw.Close();
@@ -212,7 +283,6 @@ namespace Word_Find_Solver
         /// <summary>
         /// from a starting letter/position, find all possible words from this
         /// </summary>
-        /// <param name="lb"></param>
         /// <param name="word"></param>
         /// <param name="history"></param>
         /// <param name="lastdir"></param>
@@ -221,13 +291,15 @@ namespace Word_Find_Solver
         /// <param name="maxx"></param>
         /// <param name="miny"></param>
         /// <param name="maxy"></param>
-        private static List<string> Solve(String word, List<TextBox> history, Direction lastdir, FindMode fm, int minx, int maxx, int miny, int maxy)
+        private static IEnumerable<Tuple<string, int>> Solve(String word, List<GridPoint> history, Direction lastdir, FindMode fm, int minx,
+                                          int maxx, int miny, int maxy)
         {
-            var retwords = new List<string>();
+            var retwords = new List<Tuple<string, int>>();
             //if its a word, add
             if (trieroot.ContainsWord(word, false))
             {
-                retwords.Add(word);
+                var sc = GetWordScore(history);
+                retwords.Add(new Tuple<string, int>(word, sc));
             }
 
             for (int y = miny; y <= maxy; y++)
@@ -240,31 +312,26 @@ namespace Word_Find_Solver
                     if (OutOfBounds(x, true))
                         continue;
 
-                    char gc = grid[y][x];
-                    var thistb = GetControl(x, y);
+                    var p = grid[y][x];
 
-                    if (history.Contains(thistb))
+                    if (history.Contains(p))
                         continue;
 
-                    Direction newdir;
-                    if (history.Count == 0)
-                        newdir = Direction.NotSet;
-                    else
-                        newdir = GetDirection(history.Last(), thistb);
+                    Direction newdir = history.Count == 0 ? Direction.NotSet : GetDirection(history.Last(), p);
 
                     if (newdir != lastdir && lastdir != Direction.NotSet && fm == FindMode.Crossword)
                         continue;
 
-                    String newword = word + gc;
+                    String newword = word + p.C;
 
                     if (trieroot.ContainsWord(newword, true))
                     {
-                        var newhistory = new List<TextBox>();
+                        var newhistory = new List<GridPoint>();
                         newhistory.AddRange(history);
-                        newhistory.Add(thistb);
+                        newhistory.Add(p);
 
-                        int nminx = -1, nminy = -1, nmaxx = -1, nmaxy = -1;
-                        SetSearchDimensions(x, y, fm, ref nminy, ref nmaxy, ref nminx, ref nmaxx, newdir);
+                        int nminx = -1, nminy, nmaxx = -1, nmaxy;
+                        SetSearchDimensions(x, y, fm, out nminy, out nmaxy, out nminx, out nmaxx, newdir);
                         retwords.AddRange(Solve(newword, newhistory, newdir, fm, nminx, nmaxx, nminy, nmaxy));
                     }
                 }
@@ -272,25 +339,43 @@ namespace Word_Find_Solver
             return retwords;
         }
 
+        private static int GetWordScore(IEnumerable<GridPoint> history)
+        {
+            int score = 0;
+            int wordmult = 1;
+
+            foreach(var h in history)
+            {
+                wordmult += h.WordMultiplierExtra;
+                score += letterScores[h.C]*h.LetterMultiplier;
+            }
+
+            score *= wordmult;
+            
+            return score;
+        }
+
         /// <summary>
-        /// find all words in a grid and output the words found to a listbox
+        /// find all words and their scores in a grid and output the words found to a listbox
         /// </summary>
-        /// <param name="lb"></param>
         /// <param name="fm"></param>
         /// <param name="maxret"></param>
-        public static List<string> Solve(FindMode fm, int maxret = 100)
+        public static List<Tuple<string, int>> Solve(FindMode fm, int maxret = 100)
         {
-            var foundwords = new List<string>();
-
-            int minx = -1, miny = -1, maxx = -1, maxy = -1;
+            var foundwords = new List<Tuple<string, int>>();
 
             for (int y = 0; y < height; y++)
             {
                 for (int x = 0; x < width; x++)
                 {
-                    var tb = GetControl(x, y);
-                    SetSearchDimensions(x, y, fm, ref miny, ref maxy, ref minx, ref maxx);
-                    foundwords.AddRange(Solve(grid[y][x].ToString(), new List<TextBox>() { tb }, Direction.NotSet, fm, minx, maxx, miny, maxy));
+                    var gp = grid[y][x];
+                    int miny;
+                    int maxy;
+                    int minx;
+                    int maxx;
+                    SetSearchDimensions(x, y, fm, out miny, out maxy, out minx, out maxx);
+                    foundwords.AddRange(Solve(grid[y][x].C.ToString(), new List<GridPoint> { gp }, Direction.NotSet, fm,
+                                              minx, maxx, miny, maxy));
                 }
             }
 
@@ -298,70 +383,10 @@ namespace Word_Find_Solver
 
             return foundwords;
         }
-
-        private static void CreatePanel()
+       
+private static bool OutOfBounds(int a, bool isX)
         {
-            PU.clearControls();
-
-            for (int y = 0; y < height; y++)
-            {
-                for (int x = 0; x < width; x++)
-                {
-                    var f = new Font(FontFamily.GenericSansSerif, 20);
-
-                    var tb = new TextBox
-                    {
-                        Width = 30,
-                        Height = 16,
-                        BorderStyle = BorderStyle.None,
-                        BackColor = normalback,
-                        ForeColor = normalfront,
-                        MaxLength = 1,
-                        Text = grid[y][x].ToString(),
-                        TextAlign = HorizontalAlignment.Center,
-                        Font = f,
-                        Name = GetControlName(x, y),
-                    };
-
-                    tb.TextChanged += baseform.GridTBChangeEvent;
-
-                    PU.addControl(tb, x != (width - 1));
-                }
-            }
-        }
-
-        private static string GetControlName(int x, int y)
-        {
-            return x.ToString() + ":" + y.ToString();
-        }
-
-        public static void ChangeTextBoxValue(TextBox tb)
-        {
-            var pos = GetControlPos(tb);
-
-            if (tb.Text.Length == 1)
-                grid[pos.Item2][pos.Item1] = tb.Text[0];
-            else
-                grid[pos.Item2][pos.Item1] = ' ';
-        }
-
-        public static TextBox GetControl(int x, int y)
-        {
-            var name = GetControlName(x, y);
-            var c = PU.controlStack.Where(s => s.Name.Equals(name));
-            if (c.Count() == 1)
-                return c.First() as TextBox;
-
-            return null;
-        }
-
-        private static bool OutOfBounds(int a, bool isX)
-        {
-            bool change = false;
-            if (a < 0)
-            {
-                change = true;
-            }
+            bool change = a < 0;
             if (a >= width && isX)
             {
                 change = true;
@@ -373,7 +398,8 @@ namespace Word_Find_Solver
             return change;
         }
 
-        private static Tuple<int, int> GetControlPos(TextBox tb)
+        /*
+        private static Tuple<int, int> GetControlPos(GridPoint tb)
         {
             var p = tb.Name.IndexOf(':');
 
@@ -382,19 +408,20 @@ namespace Word_Find_Solver
 
             return new Tuple<int, int>(x, y);
         }
+        */
 
-        private static List<TextBox> FindMatch(string word, int posc, FindMode fm, List<TextBox> lastaccum = null, Direction lastdir = Direction.NotSet)
+        private static List<GridPoint> FindMatch(string word, int posc, FindMode fm, List<GridPoint> lastaccum = null,
+                                               Direction lastdir = Direction.NotSet)
         {
             if (string.IsNullOrWhiteSpace(word))
-                return new List<TextBox>();
-
-            Tuple<int, int> lastpos = null;
+                return new List<GridPoint>();
 
             int x = -1;
             int y = -1;
             if (lastaccum != null)
             {
-                lastpos = GetControlPos(lastaccum.Last());
+                var lgp = lastaccum.Last();
+                var lastpos = new Tuple<int, int>(lgp.X, lgp.Y);
                 x = lastpos.Item1;
                 y = lastpos.Item2;
             }
@@ -405,13 +432,13 @@ namespace Word_Find_Solver
                 if (f == null)
                     continue;
 
-                var lastaccumnew = new List<TextBox>();
+                var lastaccumnew = new List<GridPoint>();
                 if (lastaccum != null)
                     lastaccumnew.AddRange(lastaccum);
                 lastaccumnew.Add(f);
 
-                var found = new List<TextBox>();
-                var ret = new List<TextBox>();
+                var found = new List<GridPoint>();
+                var ret = new List<GridPoint>();
 
                 //finished
                 if (posc == (word.Length - 1))
@@ -438,10 +465,11 @@ namespace Word_Find_Solver
                 return ret;
             }
 
-            return new List<TextBox>();
+            return new List<GridPoint>();
         }
 
-        private static void SetSearchDimensions(int startX, int startY, FindMode fm, ref int miny, ref int maxy, ref int minx, ref int maxx, Direction d = Direction.NotSet)
+        private static void SetSearchDimensions(int startX, int startY, FindMode fm, out int miny, out int maxy,
+                                                out int minx, out int maxx, Direction d = Direction.NotSet)
         {
             miny = 0;
             maxy = height;
@@ -463,8 +491,8 @@ namespace Word_Find_Solver
             //constrain the possible 
             if (d != Direction.NotSet && fm == FindMode.Crossword)
             {
-                minx = maxx = startX + Directions[d].Item1;
-                miny = maxy = startY + Directions[d].Item2;
+                minx = maxx = startX + directions[d].Item1;
+                miny = maxy = startY + directions[d].Item2;
             }
         }
 
@@ -478,13 +506,14 @@ namespace Word_Find_Solver
         /// <param name="ignorelist"></param>
         /// <param name="d"></param>
         /// <returns></returns>
-        private static IEnumerable<TextBox> GetSquare(char letter, FindMode fm, int startX = -1, int startY = -1, List<TextBox> ignorelist = null, Direction d = Direction.NotSet)
+        private static IEnumerable<GridPoint> GetSquare(char letter, FindMode fm, int startX = -1, int startY = -1,
+                                                      List<GridPoint> ignorelist = null, Direction d = Direction.NotSet)
         {
             //if we want a direction, must have a position as well
             if (!((startX == -1 || startY == -1) && d != Direction.NotSet))
             {
-                int minx = -1, miny = -1, maxx = -1, maxy = -1;
-                SetSearchDimensions(startX, startY, fm, ref miny, ref maxy, ref minx, ref maxx, d);
+                int minx, miny, maxx, maxy;
+                SetSearchDimensions(startX, startY, fm, out miny, out maxy, out minx, out maxx, d);
 
                 for (int y = miny; y <= maxy; y++)
                 {
@@ -499,13 +528,13 @@ namespace Word_Find_Solver
                         if (y == startY && x == startX)
                             continue;
 
-                        var c = GetControl(x, y);
+                        var gp = grid[y][x];
 
-                        if (ignorelist != null && ignorelist.Contains(c))
+                        if (ignorelist != null && ignorelist.Contains(gp))
                             continue;
 
-                        if (grid[y][x] == letter)
-                            yield return GetControl(x, y);
+                        if (grid[y][x].C == letter)
+                            yield return grid[y][x];
                     }
                 }
             }
@@ -517,27 +546,46 @@ namespace Word_Find_Solver
             word = word.ToUpper();
             var matches = FindMatch(word, 0, fm);
 
-            foreach (var c in PU.Controls)
+            foreach (TextBox c in pu.Controls)
             {
-                SetTBColour(c as TextBox, matches.Contains(c));
+                SetTbColour(c , matches.Any(s=>s.Tb==c));
             }
         }
 
-        private static void SetTBColour(TextBox tb, bool find)
+        private static void SetTbColour(TextBox tb, bool find)
         {
             if (find)
             {
-                tb.ForeColor = findfront;
-                tb.BackColor = findback;
+                tb.ForeColor = Findfront;
+                tb.BackColor = Findback;
             }
             else
             {
-                tb.ForeColor = normalfront;
-                tb.BackColor = normalback;
+                tb.ForeColor = Normalfront;
+                tb.BackColor = Normalback;
             }
         }
 
+        /// <summary>
+        /// get x,y of text box passed in.
+        /// </summary>
+        /// <param name="tb"> </param>
+        /// <returns>x,y tuple</returns>
+        public static GridPoint GetPointFromTextBox(TextBox tb)
+        {
+            var res = ((String)tb.Name).Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries);
 
+            int x = int.Parse(res[0]);
+            int y = int.Parse(res[1]);
+            return grid[y][x];
+        }
 
+        public static void SetGridPointValue(TextBox tb, char c, bool setTextboxValue = true)
+        {
+            var gp = GetPointFromTextBox(tb);
+            var c2 = c.ToString(CultureInfo.InvariantCulture).ToUpper()[0];
+            gp.Tb.Text = c2.ToString(CultureInfo.InvariantCulture);
+            gp.C = c2;
+        }
     }
 }
