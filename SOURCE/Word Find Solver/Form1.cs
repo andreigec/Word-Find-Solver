@@ -17,7 +17,7 @@ namespace Word_Find_Solver
         #region licensing
 
         private const string AppTitle = "Word Find Solver";
-        private const double AppVersion = 0.5;
+        private const double AppVersion = 0.51;
         private const String HelpString = "";
 
         private const String UpdatePath = "https://github.com/EvilSeven/Word-Find-Solver/zipball/master";
@@ -406,7 +406,7 @@ Zip Assets © SharpZipLib (http://www.sharpdevelop.net/OpenSource/SharpZipLib/)
             {
                 AllowTbChangeEvent = false;
                 var tb = sender as TextBox;
-                Grid.SetGridPointValue(tb, tb.Text[0], false);
+                Grid.SetGridPointValue(tb, tb.Text, false);
 
                 Solve(true);
                 ApplySolve();
@@ -430,7 +430,7 @@ Zip Assets © SharpZipLib (http://www.sharpdevelop.net/OpenSource/SharpZipLib/)
                             {
                                 new MassVariableEdit.TextBoxItems("Enter a letter multiplier for this grid square", "1",
                                                                   KeypressEvent, AcceptFinalTextBoxTextH,"Must be >=0 and a number"),
-                                new MassVariableEdit.TextBoxItems("Enter an extra word bonus multiplier. Adding 1 here will make the word worth 2x etc",
+                                new MassVariableEdit.TextBoxItems("Enter an extra word bonus multiplier. eg 1=2x score",
                                     "0",KeypressEvent, AcceptFinalTextBoxTextH, "Must be >=0 and a number")
                             };
 

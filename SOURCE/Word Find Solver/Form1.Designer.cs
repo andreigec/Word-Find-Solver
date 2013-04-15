@@ -35,8 +35,6 @@ namespace Word_Find_Solver
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadLettersFromImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -82,7 +80,6 @@ namespace Word_Find_Solver
             this.menuStrip1.BackColor = System.Drawing.Color.Silver;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.toolsToolStripMenuItem,
             this.optionsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -105,21 +102,6 @@ namespace Word_Find_Solver
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // toolsToolStripMenuItem
-            // 
-            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.loadLettersFromImageToolStripMenuItem});
-            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.toolsToolStripMenuItem.Text = "Tools";
-            // 
-            // loadLettersFromImageToolStripMenuItem
-            // 
-            this.loadLettersFromImageToolStripMenuItem.Name = "loadLettersFromImageToolStripMenuItem";
-            this.loadLettersFromImageToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
-            this.loadLettersFromImageToolStripMenuItem.Text = "Load letters from image";
-            this.loadLettersFromImageToolStripMenuItem.Click += new System.EventHandler(this.loadLettersFromImageToolStripMenuItem_Click);
-            // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -136,13 +118,13 @@ namespace Word_Find_Solver
             this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem.CheckOnClick = true;
             this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem.Name = "whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem";
-            this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem.Size = new System.Drawing.Size(312, 22);
-            this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem.Text = "When loading image, ignore top bit of image";
+            this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem.Size = new System.Drawing.Size(328, 22);
+            this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem.Text = "When loading image, ignore top 100px of image";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(309, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(325, 6);
             // 
             // toolStripMenuItem1
             // 
@@ -150,7 +132,7 @@ namespace Word_Find_Solver
             this.tesseractOCRToolStripMenuItem,
             this.histogramOCRToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(312, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(328, 22);
             this.toolStripMenuItem1.Text = "OCRMethod";
             // 
             // tesseractOCRToolStripMenuItem
@@ -515,8 +497,6 @@ namespace Word_Find_Solver
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button sortnamebutton;
         private System.Windows.Forms.Button randomlettersbutton;
-        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem loadLettersFromImageToolStripMenuItem;
         private System.Windows.Forms.Button loadfromimageB;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;

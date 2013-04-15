@@ -1,3 +1,7 @@
+version 0.51
+*Fixed bug changing value of grid point.
+*Removed useless menu option.
+
 version 0.5
 *Added histogram OCR tuned for SpellTower, and chosen by default.
 *Can now add letter and word multipliers by right clicking on a letter.

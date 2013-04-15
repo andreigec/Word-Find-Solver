@@ -580,10 +580,12 @@ private static bool OutOfBounds(int a, bool isX)
             return grid[y][x];
         }
 
-        public static void SetGridPointValue(TextBox tb, char c, bool setTextboxValue = true)
+        public static void SetGridPointValue(TextBox tb, string sFirstOnly, bool setTextboxValue = true)
         {
             var gp = GetPointFromTextBox(tb);
-            var c2 = c.ToString(CultureInfo.InvariantCulture).ToUpper()[0];
+            if (sFirstOnly.Length == 0)
+                sFirstOnly = "\0";
+            var c2 = sFirstOnly.ToUpper()[0];
             gp.Tb.Text = c2.ToString(CultureInfo.InvariantCulture);
             gp.C = c2;
         }
