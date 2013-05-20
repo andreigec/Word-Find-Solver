@@ -1,3 +1,7 @@
+version 0.6
+*Checked to see if histogram file exists before running OCR.
+*Added option to find letters from anywhere on the grid
+
 version 0.51
 *Fixed bug changing value of grid point.
 *Removed useless menu option.

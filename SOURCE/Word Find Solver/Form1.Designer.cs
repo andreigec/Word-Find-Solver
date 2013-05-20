@@ -37,6 +37,7 @@ namespace Word_Find_Solver
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bestonlyCB = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tesseractOCRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,6 +56,7 @@ namespace Word_Find_Solver
             this.manualentry = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.anywhereRB = new System.Windows.Forms.RadioButton();
             this.lastletterllRB = new System.Windows.Forms.RadioButton();
             this.crosswordRB = new System.Windows.Forms.RadioButton();
             this.sortlengthbutton = new System.Windows.Forms.Button();
@@ -68,6 +70,7 @@ namespace Word_Find_Solver
             this.grid = new ANDREICSLIB.PanelReplacement();
             this.GridLetterContext = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.changeMultiplierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.top100onlyCB = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -106,6 +109,8 @@ namespace Word_Find_Solver
             // 
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem,
+            this.top100onlyCB,
+            this.bestonlyCB,
             this.toolStripSeparator1,
             this.toolStripMenuItem1});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
@@ -118,13 +123,22 @@ namespace Word_Find_Solver
             this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem.CheckOnClick = true;
             this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem.Name = "whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem";
-            this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem.Size = new System.Drawing.Size(328, 22);
+            this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem.Size = new System.Drawing.Size(339, 22);
             this.whenLoadingImageIgnoreTopBitOfImageToolStripMenuItem.Text = "When loading image, ignore top 100px of image";
+            // 
+            // bestonlyCB
+            // 
+            this.bestonlyCB.Checked = true;
+            this.bestonlyCB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.bestonlyCB.Name = "bestonlyCB";
+            this.bestonlyCB.Size = new System.Drawing.Size(339, 22);
+            this.bestonlyCB.Text = "Only return the highest scoring of duplicate words";
+            this.bestonlyCB.Click += new System.EventHandler(this.onlyReturnTheHighestScoringOfDuplicateWordsToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(325, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(336, 6);
             // 
             // toolStripMenuItem1
             // 
@@ -132,7 +146,7 @@ namespace Word_Find_Solver
             this.tesseractOCRToolStripMenuItem,
             this.histogramOCRToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(328, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(339, 22);
             this.toolStripMenuItem1.Text = "OCRMethod";
             // 
             // tesseractOCRToolStripMenuItem
@@ -184,7 +198,7 @@ namespace Word_Find_Solver
             // 
             // loadfromimageB
             // 
-            this.loadfromimageB.Location = new System.Drawing.Point(6, 75);
+            this.loadfromimageB.Location = new System.Drawing.Point(6, 77);
             this.loadfromimageB.Name = "loadfromimageB";
             this.loadfromimageB.Size = new System.Drawing.Size(122, 23);
             this.loadfromimageB.TabIndex = 10;
@@ -291,6 +305,7 @@ namespace Word_Find_Solver
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.anywhereRB);
             this.groupBox2.Controls.Add(this.lastletterllRB);
             this.groupBox2.Controls.Add(this.crosswordRB);
             this.groupBox2.Location = new System.Drawing.Point(12, 149);
@@ -300,10 +315,21 @@ namespace Word_Find_Solver
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Step 2:Method for finding words";
             // 
+            // anywhereRB
+            // 
+            this.anywhereRB.AutoSize = true;
+            this.anywhereRB.Location = new System.Drawing.Point(269, 25);
+            this.anywhereRB.Name = "anywhereRB";
+            this.anywhereRB.Size = new System.Drawing.Size(72, 17);
+            this.anywhereRB.TabIndex = 2;
+            this.anywhereRB.Text = "Anywhere";
+            this.anywhereRB.UseVisualStyleBackColor = true;
+            this.anywhereRB.CheckedChanged += new System.EventHandler(this.anywhereRB_CheckedChanged);
+            // 
             // lastletterllRB
             // 
             this.lastletterllRB.AutoSize = true;
-            this.lastletterllRB.Location = new System.Drawing.Point(128, 28);
+            this.lastletterllRB.Location = new System.Drawing.Point(99, 25);
             this.lastletterllRB.Name = "lastletterllRB";
             this.lastletterllRB.Size = new System.Drawing.Size(164, 17);
             this.lastletterllRB.TabIndex = 1;
@@ -315,7 +341,7 @@ namespace Word_Find_Solver
             // 
             this.crosswordRB.AutoSize = true;
             this.crosswordRB.Checked = true;
-            this.crosswordRB.Location = new System.Drawing.Point(19, 28);
+            this.crosswordRB.Location = new System.Drawing.Point(9, 25);
             this.crosswordRB.Name = "crosswordRB";
             this.crosswordRB.Size = new System.Drawing.Size(74, 17);
             this.crosswordRB.TabIndex = 0;
@@ -442,6 +468,15 @@ namespace Word_Find_Solver
             this.changeMultiplierToolStripMenuItem.Text = "Change Multiplier";
             this.changeMultiplierToolStripMenuItem.Click += new System.EventHandler(this.changeMultiplierToolStripMenuItem_Click);
             // 
+            // limitToTop100ResultsToolStripMenuItem
+            // 
+            this.top100onlyCB.Checked = true;
+            this.top100onlyCB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.top100onlyCB.Name = "limitToTop100ResultsToolStripMenuItem";
+            this.top100onlyCB.Size = new System.Drawing.Size(339, 22);
+            this.top100onlyCB.Text = "Limit to top 100 results";
+            this.top100onlyCB.Click += new System.EventHandler(this.limitToTop100ResultsToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -510,6 +545,9 @@ namespace Word_Find_Solver
         private System.Windows.Forms.ListView foundwordsLB;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.RadioButton anywhereRB;
+        private System.Windows.Forms.ToolStripMenuItem bestonlyCB;
+        private System.Windows.Forms.ToolStripMenuItem top100onlyCB;
     }
 }
 

@@ -17,7 +17,7 @@ namespace Word_Find_Solver
         #region licensing
 
         private const string AppTitle = "Word Find Solver";
-        private const double AppVersion = 0.51;
+        private const double AppVersion = 0.6;
         private const String HelpString = "";
 
         private const String UpdatePath = "https://github.com/EvilSeven/Word-Find-Solver/zipball/master";
@@ -72,23 +72,23 @@ Zip Assets © SharpZipLib (http://www.sharpdevelop.net/OpenSource/SharpZipLib/)
                     return;
                 case SortMode.Length:
                     if (SortModeDesc)
-                        results = results.OrderByDescending(s => s.Item1.Length).ToList();
+                        results = results.OrderByDescending(s => s.Word.Length).ToList();
                     else
-                        results = results.OrderBy(s => s.Item1.Length).ToList();
+                        results = results.OrderBy(s => s.Word.Length).ToList();
                     break;
 
                 case SortMode.Score:
                     if (SortModeDesc)
-                        results = results.OrderByDescending(s => s.Item2).ToList();
+                        results = results.OrderByDescending(s => s.WordScore).ToList();
                     else
-                        results = results.OrderBy(s => s.Item2).ToList();
+                        results = results.OrderBy(s => s.WordScore).ToList();
                     break;
 
                 case SortMode.Alphabet:
                     if (SortModeDesc)
-                        results = results.OrderByDescending(s => s.Item1).ToList();
+                        results = results.OrderByDescending(s => s.Word).ToList();
                     else
-                        results = results.OrderBy(s => s.Item1).ToList();
+                        results = results.OrderBy(s => s.Word).ToList();
                     break;
 
                 default:
@@ -152,16 +152,24 @@ Zip Assets © SharpZipLib (http://www.sharpdevelop.net/OpenSource/SharpZipLib/)
 
         private void ApplySolve()
         {
-            var op = GetFindMode();
+            if (string.IsNullOrEmpty(manualentry.Text) == false)
+            {
+                var op = GetFindMode();
+                Grid.FindAndHighlight(manualentry.Text, op);
+            }
+            else if (foundwordsLB.SelectedItems.Count == 1 && foundwordsLB.SelectedItems[0].Tag is Grid.FoundWord)
+            {
+                var sel = (Grid.FoundWord)foundwordsLB.SelectedItems[0].Tag;
 
-            Grid.FindAndHighlight(manualentry.Text, op);
+                Grid.FindAndHighlight(sel);
+            }
         }
 
-        private List<Tuple<string, int>> results = null;
+        private List<Grid.FoundWord> results = null;
         private void Solve(bool refreshResults)
         {
             if (results == null || refreshResults)
-                results = Grid.Solve(GetFindMode());
+                results = Grid.Solve(GetFindMode(), bestonlyCB.Checked,top100onlyCB.Checked?100:-1);
 
             foundwordsLB.Items.Clear();
 
@@ -170,14 +178,15 @@ Zip Assets © SharpZipLib (http://www.sharpdevelop.net/OpenSource/SharpZipLib/)
             foreach (var r in results)
             {
                 var lvi = new ListViewItem();
-                lvi.Text = r.Item1;
+                lvi.Text = r.Word;
                 lvi.Name = lvi.Text;
-                lvi.SubItems.Add(r.Item2.ToString(CultureInfo.InvariantCulture));
+                lvi.SubItems.Add(r.WordScore.ToString(CultureInfo.InvariantCulture));
+                lvi.Tag = r;
                 foundwordsLB.Items.Add(lvi);
             }
         }
 
-        public void LoadGridFromFile(String filename, Grid.FindMode fm)
+        public void LoadGridFromFile(String filename)
         {
             AllowLookupEvents = AllowTbChangeEvent = false;
             var fs = new FileStream(filename, FileMode.Open);
@@ -215,6 +224,12 @@ Zip Assets © SharpZipLib (http://www.sharpdevelop.net/OpenSource/SharpZipLib/)
                     rows = OCR.LoadImage(b).Item3;
                 else
                 {
+                    if (File.Exists("hist.hist")==false)
+                    {
+                        MessageBox.Show(
+                            "error, histogram file 'hist.hist' does not exist.\r\nYou can generate manually via the histogram OCR trainer");
+                        return;
+                    }
                     var h = HistogramOCR.DeSerialise("hist.hist");
                     rows = h.PerformOCR(b, 100);
                 }
@@ -224,6 +239,7 @@ Zip Assets © SharpZipLib (http://www.sharpdevelop.net/OpenSource/SharpZipLib/)
             catch (Exception ex)
             {
                 MessageBox.Show("error:" + ex);
+                AllowLookupEvents = AllowTbChangeEvent = true;
                 return;
             }
 
@@ -239,19 +255,10 @@ Zip Assets © SharpZipLib (http://www.sharpdevelop.net/OpenSource/SharpZipLib/)
                 return Grid.FindMode.Crossword;
             if (lastletterllRB.Checked)
                 return Grid.FindMode.AllDirFromLast;
+            if (anywhereRB.Checked)
+                return Grid.FindMode.Anywhere;
 
             return Grid.FindMode.NotSet;
-        }
-
-        private void crosswordRB_CheckedChanged(object sender, EventArgs e)
-        {
-            Solve(true);
-            ApplySolve();
-        }
-
-        private void lastletterllRB_CheckedChanged(object sender, EventArgs e)
-        {
-            ApplySolve();
         }
 
         private void loadwordgrid_Click(object sender, EventArgs e)
@@ -263,27 +270,67 @@ Zip Assets © SharpZipLib (http://www.sharpdevelop.net/OpenSource/SharpZipLib/)
             if (res != DialogResult.OK)
                 return;
 
-            LoadGridFromFile(ofd.FileName, GetFindMode());
+            LoadGridFromFile(ofd.FileName);
         }
 
+        private void limitToTop100ResultsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            top100onlyCB.Checked = !top100onlyCB.Checked;
+            Solve(true);
+            ApplySolve();
+        }
 
+        #region search type
+        private void crosswordRB_CheckedChanged(object sender, EventArgs e)
+        {
+            Solve(top100onlyCB.Checked);
+            ApplySolve();
+        }
+
+        private void lastletterllRB_CheckedChanged(object sender, EventArgs e)
+        {
+            Solve(top100onlyCB.Checked);
+            ApplySolve();
+        }
+
+        private void anywhereRB_CheckedChanged(object sender, EventArgs e)
+        {
+            Solve(top100onlyCB.Checked);
+            ApplySolve();
+        }
+
+        #endregion search type
+
+        #region sort type
         private void sortlengthbutton_Click(object sender, EventArgs e)
         {
             ChangeSortMode(SortMode.Length);
-            Solve(false);
+            Solve(top100onlyCB.Checked);
+            ApplySolve();
         }
 
         private void sortscorebutton_Click(object sender, EventArgs e)
         {
             ChangeSortMode(SortMode.Score);
             Solve(false);
+            ApplySolve();
         }
+
+        private void sortnamebutton_Click(object sender, EventArgs e)
+        {
+            ChangeSortMode(SortMode.Alphabet);
+            Solve(false);
+            ApplySolve();
+        }
+
+        #endregion sort type
 
         private void savebutton_Click(object sender, EventArgs e)
         {
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Title = "Choose a file name for the new grid";
             sfd.Filter = "|*.txt";
+            sfd.InitialDirectory = Environment.CurrentDirectory;
             var res = sfd.ShowDialog();
             if (res != DialogResult.OK)
                 return;
@@ -323,23 +370,12 @@ Zip Assets © SharpZipLib (http://www.sharpdevelop.net/OpenSource/SharpZipLib/)
             e.Handled = TextboxExtras.HandleInput(TextboxExtras.InputType.Create(false, true), e.KeyChar, createheightTB);
         }
 
-        private void sortnamebutton_Click(object sender, EventArgs e)
-        {
-            ChangeSortMode(SortMode.Alphabet);
-            Solve(false);
-        }
-
         private void randomlettersbutton_Click(object sender, EventArgs e)
         {
             Grid.Clear();
-            Grid.RandomiseLetters(GetFindMode());
+            Grid.RandomiseLetters();
             Solve(true);
             ApplySolve();
-        }
-
-        private void loadLettersFromImageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void loadfromimageB_Click(object sender, EventArgs e)
@@ -373,9 +409,9 @@ Zip Assets © SharpZipLib (http://www.sharpdevelop.net/OpenSource/SharpZipLib/)
             {
                 AllowLookupEvents = false;
 
-                if (foundwordsLB.SelectedItems.Count == 1)
+                if (foundwordsLB.SelectedItems.Count == 1 && foundwordsLB.SelectedItems[0].Tag is Grid.FoundWord)
                 {
-                    manualentry.Text = foundwordsLB.SelectedItems[0].Text;
+                    manualentry.Text = "";
                     ApplySolve();
                 }
                 AllowLookupEvents = true;
@@ -490,6 +526,15 @@ Zip Assets © SharpZipLib (http://www.sharpdevelop.net/OpenSource/SharpZipLib/)
             }
             if (gp.C == 0)
                 e.Cancel = true;
+        }
+
+        private void onlyReturnTheHighestScoringOfDuplicateWordsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bestonlyCB.Checked =
+                !bestonlyCB.Checked;
+
+            Solve(true);
+            ApplySolve();
         }
     }
 }

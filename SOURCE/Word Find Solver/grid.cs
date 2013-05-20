@@ -13,6 +13,27 @@ namespace Word_Find_Solver
 {
     public static class Grid
     {
+        public class FoundWord
+        {
+            public string Word;
+            public int WordScore;
+            /// <summary>
+            /// list of x,y values for each letter
+            /// </summary>
+            public List<GridPoint> Locations;
+            public FoundWord()
+            {
+
+            }
+
+            public FoundWord(string word, int wordScore, List<GridPoint> locations)
+            {
+                Word = word;
+                WordScore = wordScore;
+                Locations = locations;
+            }
+        }
+
         public class GridPoint
         {
             public TextBox Tb;
@@ -90,7 +111,7 @@ namespace Word_Find_Solver
             return 'x';
         }
 
-        public static void RandomiseLetters(FindMode fm)
+        public static void RandomiseLetters()
         {
             //create stack
             int max = letterScores.Sum(s => s.Value);
@@ -110,7 +131,8 @@ namespace Word_Find_Solver
         {
             NotSet,
             Crossword,
-            AllDirFromLast
+            AllDirFromLast,
+            Anywhere
         }
 
         public enum Direction
@@ -291,15 +313,15 @@ namespace Word_Find_Solver
         /// <param name="maxx"></param>
         /// <param name="miny"></param>
         /// <param name="maxy"></param>
-        private static IEnumerable<Tuple<string, int>> Solve(String word, List<GridPoint> history, Direction lastdir, FindMode fm, int minx,
+        private static IEnumerable<FoundWord> Solve(String word, List<GridPoint> history, Direction lastdir, FindMode fm, int minx,
                                           int maxx, int miny, int maxy)
         {
-            var retwords = new List<Tuple<string, int>>();
+            var retwords = new List<FoundWord>();
             //if its a word, add
             if (trieroot.ContainsWord(word, false))
             {
                 var sc = GetWordScore(history);
-                retwords.Add(new Tuple<string, int>(word, sc));
+                retwords.Add(new FoundWord(word, sc, history));
             }
 
             for (int y = miny; y <= maxy; y++)
@@ -344,14 +366,14 @@ namespace Word_Find_Solver
             int score = 0;
             int wordmult = 1;
 
-            foreach(var h in history)
+            foreach (var h in history)
             {
                 wordmult += h.WordMultiplierExtra;
-                score += letterScores[h.C]*h.LetterMultiplier;
+                score += letterScores[h.C] * h.LetterMultiplier;
             }
 
             score *= wordmult;
-            
+
             return score;
         }
 
@@ -360,9 +382,9 @@ namespace Word_Find_Solver
         /// </summary>
         /// <param name="fm"></param>
         /// <param name="maxret"></param>
-        public static List<Tuple<string, int>> Solve(FindMode fm, int maxret = 100)
+        public static List<FoundWord> Solve(FindMode fm, bool onlyBest, int maxret = -1)
         {
-            var foundwords = new List<Tuple<string, int>>();
+            var foundwords = new List<FoundWord>();
 
             for (int y = 0; y < height; y++)
             {
@@ -373,18 +395,38 @@ namespace Word_Find_Solver
                     int maxy;
                     int minx;
                     int maxx;
-                    SetSearchDimensions(x, y, fm, out miny, out maxy, out minx, out maxx);
+                    if (fm == FindMode.Anywhere)
+                    {
+                        miny = 0;
+                        maxy = height;
+                        minx = 0;
+                        maxx = width;
+                    }
+                    else
+                    {
+                        SetSearchDimensions(x, y, fm, out miny, out maxy, out minx, out maxx);
+                    }
+
                     foundwords.AddRange(Solve(grid[y][x].C.ToString(), new List<GridPoint> { gp }, Direction.NotSet, fm,
                                               minx, maxx, miny, maxy));
                 }
             }
 
-            foundwords = foundwords.Distinct().ToList();
+            if (onlyBest)
+            {
+                var nodupes = foundwords.GroupBy(s => s.Word).Select(s1 => s1.OrderByDescending(s2 => s2.WordScore).First()).ToList();
+                foundwords = nodupes;
+            }
+
+            foundwords = foundwords.OrderByDescending(s => s.WordScore).ToList();
+
+            if (maxret > 0)
+                foundwords = foundwords.Take(maxret).ToList();
 
             return foundwords;
         }
-       
-private static bool OutOfBounds(int a, bool isX)
+
+        private static bool OutOfBounds(int a, bool isX)
         {
             bool change = a < 0;
             if (a >= width && isX)
@@ -410,6 +452,15 @@ private static bool OutOfBounds(int a, bool isX)
         }
         */
 
+        /// <summary>
+        /// find words based on raw input text
+        /// </summary>
+        /// <param name="word"></param>
+        /// <param name="posc"></param>
+        /// <param name="fm"></param>
+        /// <param name="lastaccum"></param>
+        /// <param name="lastdir"></param>
+        /// <returns></returns>
         private static List<GridPoint> FindMatch(string word, int posc, FindMode fm, List<GridPoint> lastaccum = null,
                                                Direction lastdir = Direction.NotSet)
         {
@@ -541,6 +592,14 @@ private static bool OutOfBounds(int a, bool isX)
             yield return null;
         }
 
+        public static void FindAndHighlight(FoundWord fw)
+        {
+            foreach (TextBox c in pu.Controls)
+            {
+                SetTbColour(c, fw.Locations.Any(s => s.Tb == c));
+            }
+        }
+
         public static void FindAndHighlight(String word, FindMode fm)
         {
             word = word.ToUpper();
@@ -548,7 +607,7 @@ private static bool OutOfBounds(int a, bool isX)
 
             foreach (TextBox c in pu.Controls)
             {
-                SetTbColour(c , matches.Any(s=>s.Tb==c));
+                SetTbColour(c, matches.Any(s => s.Tb == c));
             }
         }
 
