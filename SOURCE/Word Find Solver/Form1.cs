@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using ANDREICSLIB;
 using ANDREICSLIB.ClassExtras;
 using ANDREICSLIB.NewControls;
+using Word_Find_Solver.ServiceReference1;
 
 namespace Word_Find_Solver
 {
@@ -17,12 +18,8 @@ namespace Word_Find_Solver
         #region licensing
 
         private const string AppTitle = "Word Find Solver";
-        private const double AppVersion = 0.6;
+        private const double AppVersion = 0.7;
         private const String HelpString = "";
-
-        private const String UpdatePath = "https://github.com/EvilSeven/Word-Find-Solver/zipball/master";
-        private const String VersionPath = "https://raw.github.com/EvilSeven/Word-Find-Solver/master/INFO/version.txt";
-        private const String ChangelogPath = "https://raw.github.com/EvilSeven/Word-Find-Solver/master/INFO/changelog.txt";
 
         private readonly String OtherText =
             @"©" + DateTime.Now.Year +
@@ -39,6 +36,42 @@ Zip Assets © SharpZipLib (http://www.sharpdevelop.net/OpenSource/SharpZipLib/)
         public static bool AllowLookupEvents = true;
         public static bool AllowTbChangeEvent = true;
         #endregion locks
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Licensing.CreateLicense(this, menuStrip1, new Licensing.SolutionDetails(GetDetails, HelpString, AppTitle, AppVersion, OtherText));
+            Grid.Baseform = this;
+            Grid.InitPanel(grid);
+            Grid.InitWords();
+            InitGrid(8, 8);
+        }
+
+        public Licensing.DownloadedSolutionDetails GetDetails()
+        {
+            try
+            {
+                var sr = new ServicesClient();
+                var ti = sr.GetTitleInfo(AppTitle);
+                if (ti == null)
+                    return null;
+                return ToDownloadedSolutionDetails(ti);
+
+            }
+            catch (Exception)
+            {
+            }
+            return null;
+        }
+
+        public static Licensing.DownloadedSolutionDetails ToDownloadedSolutionDetails(TitleInfoServiceModel tism)
+        {
+            return new Licensing.DownloadedSolutionDetails()
+            {
+                ZipFileLocation = tism.LatestTitleDownloadPath,
+                ChangeLog = tism.LatestTitleChangelog,
+                Version = tism.LatestTitleVersion
+            };
+        }
 
         public enum SortMode
         {
@@ -139,17 +172,6 @@ Zip Assets © SharpZipLib (http://www.sharpdevelop.net/OpenSource/SharpZipLib/)
             ResizeWindow();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            var sd = new Licensing.SolutionDetails(HelpString, AppTitle, AppVersion, OtherText, VersionPath, UpdatePath,
-                                                   ChangelogPath);
-            Licensing.CreateLicense(this, sd, menuStrip1);
-            Grid.Baseform = this;
-            Grid.InitPanel(grid);
-            Grid.InitWords();
-            InitGrid(8, 8);
-        }
-
         private void ApplySolve()
         {
             if (string.IsNullOrEmpty(manualentry.Text) == false)
@@ -169,7 +191,7 @@ Zip Assets © SharpZipLib (http://www.sharpdevelop.net/OpenSource/SharpZipLib/)
         private void Solve(bool refreshResults)
         {
             if (results == null || refreshResults)
-                results = Grid.Solve(GetFindMode(), bestonlyCB.Checked,top100onlyCB.Checked?100:-1);
+                results = Grid.Solve(GetFindMode(), bestonlyCB.Checked, top100onlyCB.Checked ? 100 : -1);
 
             foundwordsLB.Items.Clear();
 
@@ -224,7 +246,7 @@ Zip Assets © SharpZipLib (http://www.sharpdevelop.net/OpenSource/SharpZipLib/)
                     rows = OCR.LoadImage(b).Item3;
                 else
                 {
-                    if (File.Exists("hist.hist")==false)
+                    if (File.Exists("hist.hist") == false)
                     {
                         MessageBox.Show(
                             "error, histogram file 'hist.hist' does not exist.\r\nYou can generate manually via the histogram OCR trainer");
