@@ -1,0 +1,4249 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ANDREICSLIB</name>
+    </assembly>
+    <members>
+        <member name="T:ANDREICSLIB.ClassExtras.ArrayExtras">
+            <summary>
+                example usage: https://github.com/andreigec/Crossword-Puzzle-Solver
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ArrayExtras.AddItemToArray``1(``0[]@,``0)">
+            <summary>
+            Adds the item to array.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="array">The array.</param>
+            <param name="item">The item.</param>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ArrayExtras.InstantiateArray``1(System.Int32,System.Int32)">
+            <summary>
+            Instantiates the array.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="width">The width.</param>
+            <param name="height">The height.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ArrayExtras.RotateArray``1(``0[][],System.Int32,System.Int32)">
+            <summary>
+            Rotates the array.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="array">The array.</param>
+            <param name="width">The width.</param>
+            <param name="height">The height.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ArrayExtras.Clone``1(``0[][],System.Int32,System.Int32)">
+            <summary>
+            Clones the specified array.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="array">The array.</param>
+            <param name="width">The width.</param>
+            <param name="height">The height.</param>
+            <returns></returns>
+        </member>
+        <member name="P:ANDREICSLIB.ClassExtras.AssemblyValues.RepoName">
+            <summary>
+            Gets or sets the name of the repo. assembly name/ repo name
+            </summary>
+            <value>
+            The name of the repo.
+            </value>
+        </member>
+        <member name="P:ANDREICSLIB.ClassExtras.AssemblyValues.AppName">
+            <summary>
+            Gets or sets the name of the application. assembly title / app name
+            </summary>
+            <value>
+            The name of the application.
+            </value>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.AssemblyValues.GetAppString">
+            <summary>
+            appname : version
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.ClassExtras.AssemblyExtras">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.AssemblyExtras.GetEntryAssemblyInfo">
+            <summary>
+            get assembly info
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.ClassExtras.DateTimeExtras">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.ClassExtras.DateTimeExtras.MyCulture">
+            <summary>
+            My culture
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.ClassExtras.DateTimeExtras.MyTimeZoneInfo">
+            <summary>
+            My time zone information
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.DateTimeExtras.ToLocal(System.DateTime)">
+            <summary>
+            UTC to AEST conversion
+            </summary>
+            <param name="date">input date</param>
+            <returns>
+            Converted time
+            </returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.DateTimeExtras.ToLocal(System.String)">
+            <summary>
+            AEST string to AEST datetime
+            </summary>
+            <param name="localDateTime">The local date time.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.DateTimeExtras.GetLocal">
+            <summary>
+            current AEST datetime
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.DateTimeExtras.GetLocalMidnightInUtc(System.String,System.Nullable{System.Int32})">
+            <summary>
+            AEST string to AEST datetime (default will use now), 12am, to UTC datetime (optional offset)
+            </summary>
+            <param name="localDateTime">if null will use current datetime</param>
+            <param name="hoursOffset">The hours offset.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.DateTimeExtras.GetLocalMidnightInUtc(System.DateTime,System.Nullable{System.Int32})">
+            <summary>
+            Gets the local midnight in UTC.
+            </summary>
+            <param name="anyDateTime">Any date time.</param>
+            <param name="hoursOffset">The hours offset.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.DateTimeExtras.ToUTCWithHoursOffset(System.Nullable{System.Int32})">
+            <summary>
+            To the UTC with hours offset.
+            </summary>
+            <param name="hoursOffset">The hours offset.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.DateTimeExtras.ToUTCWithHoursOffset(System.String,System.Nullable{System.Int32})">
+            <summary>
+            To the UTC with hours offset.
+            </summary>
+            <param name="localDateTime">The local date time.</param>
+            <param name="hoursOffset">The hours offset.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.DateTimeExtras.ToUTCWithHoursOffset(System.DateTime,System.Nullable{System.Int32})">
+            <summary>
+            convert date to utc, use 12am, and offset
+            </summary>
+            <param name="localDateTime">The local date time.</param>
+            <param name="hoursOffset">The hours offset.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.DateTimeExtras.ParseDateExactForTimeZone(System.String,System.TimeZoneInfo)">
+            <summary>
+            Parses the date for time zone.
+            </summary>
+            <param name="dateTime">The date time.</param>
+            <param name="timezone">The timezone.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.DateTimeExtras.TruncateAndRound(System.DateTime,System.Int32)">
+            <summary>
+            Truncates the date
+            </summary>
+            <param name="dateTime">The date time.</param>
+            <param name="seconds">The seconds.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.DateTimeExtras.TruncateToSeconds(System.DateTime,System.Int32)">
+            <summary>
+            truncate to seconds
+            </summary>
+            <param name="dateTime">The date time.</param>
+            <param name="seconds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.DateTimeExtras.Round(System.TimeSpan,System.TimeSpan,System.MidpointRounding)">
+            <summary>
+            Rounds the specified rounding interval.
+            </summary>
+            <param name="time">The time.</param>
+            <param name="roundingInterval">The rounding interval.</param>
+            <param name="roundingType">Type of the rounding.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.DateTimeExtras.Round(System.DateTime,System.TimeSpan)">
+            <summary>
+            Rounds the specified date
+            </summary>
+            <param name="datetime">The datetime.</param>
+            <param name="roundingInterval">The rounding interval.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.ClassExtras.BitmapExtras">
+            <summary>
+                example usage: https://github.com/andreigec/MTG-Proxy-Maker
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.BitmapExtras.ApplyGrayscale(System.Drawing.Bitmap)">
+            <summary>
+            Applies the grayscale.
+            </summary>
+            <param name="bitmap">The bitmap.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.BitmapExtras.InitBitmap(System.Int32,System.Int32,System.Drawing.Color)">
+            <summary>
+            Initializes the bitmap.
+            </summary>
+            <param name="width">The width.</param>
+            <param name="height">The height.</param>
+            <param name="defaultColour">The default colour.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.BitmapExtras.ChangeAllNonWhitePixelsToColour(System.Drawing.Bitmap,System.Drawing.Color)">
+            <summary>
+            Changes all non white pixels to black.
+            </summary>
+            <param name="bitmap">The bitmap.</param>
+            <param name="replace"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.BitmapExtras.TransformAllGreyPixelsToBlack(System.Drawing.Bitmap,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Transforms all grey pixels to black.
+            </summary>
+            <param name="bitmap">The bitmap.</param>
+            <param name="r">The r.</param>
+            <param name="g">The g.</param>
+            <param name="b">The b.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.BitmapExtras.LoadFileToColourMatrix(System.String)">
+            <summary>
+            Loads the file to colour matrix.
+            </summary>
+            <param name="filename">The filename.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.BitmapExtras.StretchBitmap(System.Drawing.Bitmap,System.Int32,System.Int32)">
+            <summary>
+            Stretches the bitmap.
+            </summary>
+            <param name="bitmap">The bitmap.</param>
+            <param name="width">The width.</param>
+            <param name="height">The height.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.BitmapExtras.ResizeBitmap(System.Drawing.Bitmap,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Resizes the bitmap.
+            </summary>
+            <param name="bitmap">The bitmap.</param>
+            <param name="width">The width.</param>
+            <param name="height">The height.</param>
+            <param name="antiAlias">if set to <c>true</c> [anti alias].</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.BitmapExtras.ConvertBitmapToColourMatrix(System.Drawing.Bitmap)">
+            <summary>
+            Converts the bitmap to a colour matrix.
+            </summary>
+            <param name="b">The b.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.BitmapExtras.DrawLine(System.Drawing.Bitmap,System.Drawing.Color,System.Tuple{System.Int32,System.Int32},System.Tuple{System.Int32,System.Int32})">
+            <summary>
+            Draws a line.
+            </summary>
+            <param name="bitmap">The bitmap.</param>
+            <param name="colour">The colour.</param>
+            <param name="pointXYOne">The point xy one.</param>
+            <param name="pointXYTwo">The point xy two.</param>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.BitmapExtras.LockBitmap(System.Drawing.Bitmap,System.Boolean)">
+            <summary>
+            Locks the bitmap.
+            </summary>
+            <param name="bitmap">The bitmap.</param>
+            <param name="doLock">if set to <c>true</c> [do lock].</param>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.BitmapExtras.Crop(System.Drawing.Bitmap,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            crop the image based on a new width and height
+            </summary>
+            <param name="bitmap">in image</param>
+            <param name="newWidth">a size, or -1 for the input size</param>
+            <param name="newHeight">a size, or -1 for the input size</param>
+            <param name="startx"> </param>
+            <param name="starty"> </param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.BitmapExtras.IsAllPixelsAColour(System.Drawing.Bitmap,System.Drawing.Color)">
+            <summary>
+            Determines whether [is all pixels a colour] [the specified bitmap].
+            </summary>
+            <param name="bitmap">The bitmap.</param>
+            <param name="colour">The colour.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.BitmapExtras.IsRowOrColSameColour(System.Drawing.Bitmap,System.Int32,System.Boolean,System.Drawing.Color)">
+            <summary>
+            Determines whether the bitmap has the entire row/col of the same colour
+            </summary>
+            <param name="bitmap">The bitmap.</param>
+            <param name="rowOrCol">The row or col.</param>
+            <param name="isRow">if set to <c>true</c> [is row].</param>
+            <param name="c">The c.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.BitmapExtras.RemoveExcessWhitespace(System.Drawing.Bitmap,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            Removes the excess whitespace.
+            </summary>
+            <param name="bitmap">The bitmap.</param>
+            <param name="keepPureWhite">if set to <c>true</c>, wont throw an exception if entire bitmap is white</param>
+            <param name="padx">The padx.</param>
+            <param name="pady">The pady.</param>
+            <returns></returns>
+            <exception cref="T:System.Exception">error resizing</exception>
+        </member>
+        <member name="T:ANDREICSLIB.ClassExtras.CheckedListBoxExtras">
+            <summary>
+                example usage: https://github.com/andreigec/BeadSprite-Pro
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.CheckedListBoxExtras.CheckAll(System.Windows.Forms.CheckedListBox,System.Boolean)">
+            <summary>
+            Checks all.
+            </summary>
+            <param name="cb">The cb.</param>
+            <param name="value">if set to <c>true</c> [value].</param>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.CheckedListBoxExtras.CheckItem(System.Windows.Forms.CheckedListBox,System.String)">
+            <summary>
+            Checks the item.
+            </summary>
+            <param name="cb">The cb.</param>
+            <param name="item">The item.</param>
+        </member>
+        <member name="T:ANDREICSLIB.ClassExtras.ContextMenuStripExtras">
+            <summary>
+                example usage: https://github.com/andreigec/Word-Find-Solver
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ContextMenuStripExtras.GetContextParent(System.ComponentModel.IComponent,System.Type)">
+            <summary>
+            get the parent of a context menu, either opening up, or a tool strip right click
+            </summary>
+            <param name="senderToolStrip">The sender tool strip.</param>
+            <param name="t">The t.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.ClassExtras.DirectoryExtras">
+            <summary>
+                example usage: https://github.com/andreigec/MTG-Proxy-Maker
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.DirectoryExtras.GetExePath">
+            <summary>
+            Gets the executable path.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.DirectoryExtras.SetCurrentDirectoryToDefault">
+            <summary>
+            Sets the current directory to default.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.DirectoryExtras.GetFilesRecursive(System.String)">
+            <summary>
+            get all the files under a folder
+            </summary>
+            <param name="absolutePath">must be the absolute path, not the relative path</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.DirectoryExtras.DeleteDirectory(System.String)">
+            <summary>
+            delete a directory and all its files
+            </summary>
+            <param name="folderName">Name of the folder.</param>
+        </member>
+        <member name="T:ANDREICSLIB.ClassExtras.ListExtras">
+            <summary>
+                example usage: https://github.com/andreigec/Phrase-Profiler
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ListExtras.DistinctBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})">
+            <summary>
+            Distinct by 
+            </summary>
+            <typeparam name="TSource">The type of the source.</typeparam>
+            <typeparam name="TKey">The type of the key.</typeparam>
+            <param name="source">The source.</param>
+            <param name="keySelector">The key selector.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ListExtras.GetAllCombinations``1(System.Collections.Generic.List{``0},System.Int32,System.Int32)">
+            <summary>
+            Gets all combinations.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="inlist">The inlist.</param>
+            <param name="minlength">The minlength.</param>
+            <param name="maxlength">The maxlength.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ListExtras.Swap``1(System.Collections.Generic.List{``0}@,System.Int32,System.Int32)">
+            <summary>
+            Swaps the specified list.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list">The list.</param>
+            <param name="index1">The index1.</param>
+            <param name="index2">The index2.</param>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ListExtras.Serialise(System.Collections.Generic.List{System.Object},System.String)">
+            <summary>
+            Serialises the specified list.
+            </summary>
+            <param name="list">The list.</param>
+            <param name="sep">The sep.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ListExtras.ContainsLoopThrough``1(System.Collections.Generic.List{System.Object},``0)">
+            <summary>
+            Determines whether [contains loop through] [the specified list].
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list">The list.</param>
+            <param name="val">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ListExtras.Intersect``1(System.Collections.Generic.List{``0},System.Collections.Generic.List{``0})">
+            <summary>
+            Intersects the specified one.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="one">The one.</param>
+            <param name="two">The two.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ListExtras.Initialise``1(System.Int32,``0)">
+            <summary>
+            Initialises the specified count.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="count">The count.</param>
+            <param name="val">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ListExtras.InsertAlphabetically(System.Collections.Generic.List{System.String}@,System.Collections.Generic.List{System.String})">
+            <summary>
+            Inserts the alphabetically.
+            </summary>
+            <param name="l">The l.</param>
+            <param name="toAdd">To add.</param>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ListExtras.InsertAlphabetically(System.Collections.Generic.List{System.String}@,System.String)">
+            <summary>
+            Inserts the alphabetically.
+            </summary>
+            <param name="l">The l.</param>
+            <param name="toAdd">To add.</param>
+        </member>
+        <member name="T:ANDREICSLIB.ClassExtras.ListExtras.IntersectResult`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ListExtras.IntersectResult`1.#ctor(System.Collections.Generic.List{`0},System.Collections.Generic.List{`0},System.Collections.Generic.List{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:ANDREICSLIB.ClassExtras.ListExtras.IntersectResult`1"/> class.
+            </summary>
+            <param name="sameElements">The same elements.</param>
+            <param name="oneOnly">The one only.</param>
+            <param name="twoOnly">The two only.</param>
+        </member>
+        <member name="P:ANDREICSLIB.ClassExtras.ListExtras.IntersectResult`1.SameElements">
+            <summary>
+            Gets or sets the same elements.
+            </summary>
+            <value>
+            The same elements.
+            </value>
+        </member>
+        <member name="P:ANDREICSLIB.ClassExtras.ListExtras.IntersectResult`1.OneOnly">
+            <summary>
+            Gets or sets the one only.
+            </summary>
+            <value>
+            The one only.
+            </value>
+        </member>
+        <member name="P:ANDREICSLIB.ClassExtras.ListExtras.IntersectResult`1.TwoOnly">
+            <summary>
+            Gets or sets the two only.
+            </summary>
+            <value>
+            The two only.
+            </value>
+        </member>
+        <member name="T:ANDREICSLIB.ClassExtras.TabPageExtras">
+            <summary>
+                example usage: https://github.com/andreigec/Consultant-Plus
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.TabPageExtras.SetEnableOnAllTabPageControls(System.Windows.Forms.TabPage,System.Boolean)">
+            <summary>
+            Sets the enable on all tab page controls.
+            </summary>
+            <param name="tp">The tp.</param>
+            <param name="enabled">if set to <c>true</c> [enabled].</param>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.TabPageExtras.SetEnableOnAllTabPagesInTabControl(System.Windows.Forms.TabControl,System.Boolean,System.Collections.Generic.List{System.Windows.Forms.TabPage})">
+            <summary>
+            Sets the enable on all tab pages in tab control.
+            </summary>
+            <param name="tc">The tc.</param>
+            <param name="enabled">if set to <c>true</c> [enabled].</param>
+            <param name="excluding">The excluding.</param>
+        </member>
+        <member name="T:ANDREICSLIB.ClassExtras.ColorExtras">
+            <summary>
+            example usage: https://github.com/andreigec/Meal-Chooser
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ColorExtras.Equals(System.Drawing.Color,System.Drawing.Color)">
+            <summary>
+            do the colours match
+            </summary>
+            <param name="c1">The c1.</param>
+            <param name="c2">The c2.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ColorExtras.ConvertHexStringToColour(System.String)">
+            <summary>
+            Converts the hexadecimal string to colour.
+            </summary>
+            <param name="hexstring">The hexstring.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ColorExtras.GetNegativeColour(System.Drawing.Color)">
+            <summary>
+            Gets the negative colour.
+            </summary>
+            <param name="colour">The colour.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ColorExtras.GetRedGreenBlendedColour(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Gets a red green blended colour from passed in int.
+            </summary>
+            <param name="p">The p.</param>
+            <param name="min">The minimum.</param>
+            <param name="max">The maximum.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ColorExtras.GetNearestColour(System.Drawing.Color,System.Collections.Generic.List{System.Drawing.Color})">
+            <summary>
+            Gets the nearest colour.
+            </summary>
+            <param name="c1">The c1.</param>
+            <param name="possibleColours">The possible colours.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.ClassExtras.DictionaryExtras">
+            <summary>
+                example usage: https://github.com/andreigec/Music-File-Info-Editor
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.DictionaryExtras.GetKeyByValue``2(System.Collections.Generic.Dictionary{``0,``1},``1)">
+            <summary>
+            Gets the key by value.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="Y"></typeparam>
+            <param name="dict">The dictionary.</param>
+            <param name="val">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.DictionaryExtras.MergeTwoDictionaries``2(System.Collections.Generic.Dictionary{``0,``1}@,System.Collections.Generic.Dictionary{``0,``1},System.Boolean)">
+            <summary>
+            Merges the two dictionaries.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="Y"></typeparam>
+            <param name="keep">The keep.</param>
+            <param name="mergein">The mergein.</param>
+            <param name="overwriteExisting">if set to <c>true</c> [overwrite existing].</param>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.DictionaryExtras.DictToListOfListViewItems(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}})">
+            <summary>
+            Convert a dictionary of key/value to a list of listviewitems
+            </summary>
+            <param name="origDict">Input Dictionary, string as the key for the text/name, and a list of strings in the value, for
+            subitems</param>
+            <returns>
+            a list of listviewitems made from a dictionary
+            </returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.DictionaryExtras.DictToListOfListViewItems(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Convert a dictionary of key/value to a list of listviewitems
+            </summary>
+            <param name="origDict">Input Dictionary, string as the key for the text/name, and a string in the value, for a subitem</param>
+            <returns>
+            a list of listviewitems made from a dictionary
+            </returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.DictionaryExtras.Serialise(System.Collections.Generic.Dictionary{System.String,System.Object},Newtonsoft.Json.JsonSerializer,System.IO.FileStream)">
+            <summary>
+            Serialises the specified json.
+            </summary>
+            <param name="dictionary">The dictionary.</param>
+            <param name="json">The json.</param>
+            <param name="fs">The fs.</param>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.DictionaryExtras.Deserialize(System.IO.Stream)">
+            <summary>
+            load json from a filestream into a dictionary
+            </summary>
+            <param name="stream">The s.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.DictionaryExtras.Deserialize(System.String)">
+            <summary>
+            Deserializes the specified URL.
+            </summary>
+            <param name="url">The URL.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.DictionaryExtras.RemoveEmptyKeysAndValues(System.Collections.Generic.Dictionary{System.String,System.Object}@)">
+            <summary>
+            remove empty keys and values
+            </summary>
+            <param name="dictionary">The dictionary.</param>
+        </member>
+        <member name="T:ANDREICSLIB.ClassExtras.FileExtras">
+            <summary>
+                example usage: https://github.com/andreigec/Dwarf-Fortress-Mod-Merger
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.FileExtras.LoadFile(System.String)">
+            <summary>
+            load a file from a path into a string
+            </summary>
+            <param name="filename">The filename.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.FileExtras.SaveToFile(System.String,System.String,System.Boolean)">
+            <summary>
+            Saves to file.
+            </summary>
+            <param name="filename">The filename.</param>
+            <param name="text">The text.</param>
+            <param name="append">if set to <c>true</c> [append].</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.FileExtras.CreateDirectoryTree(System.String[],System.String)">
+            <summary>
+            Creates the directory tree.
+            </summary>
+            <param name="dirs">The dirs.</param>
+            <param name="basedir">The basedir.</param>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.FileExtras.MergeDirectories(System.String,System.String)">
+            <summary>
+            move all the children items from merge to based, overwriting existing
+            </summary>
+            <param name="based">dest directory,=</param>
+            <param name="merge">directory to moverge into dest</param>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.FileExtras.DeleteDirectory(System.String)">
+            <summary>
+            delete directory if exists
+            </summary>
+            <param name="dir">The dir.</param>
+            <exception cref="T:System.Exception">Can't delete directory</exception>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.FileExtras.CreateFile(System.String)">
+            <summary>
+            create a file and then close the stream
+            </summary>
+            <param name="filepath">The filepath.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.FileExtras.CreateDirectory(System.String)">
+            <summary>
+            create directory if doesnt exist
+            </summary>
+            <param name="dir">The dir.</param>
+            <exception cref="T:System.Exception">Can't create directory</exception>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.FileExtras.TrimFileName(System.String,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Trims the name of the file.
+            </summary>
+            <param name="fn">The function.</param>
+            <param name="basepath">if set to <c>true</c> [basepath].</param>
+            <param name="filename">if set to <c>true</c> [filename].</param>
+            <param name="extension">if set to <c>true</c> [extension].</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.FileExtras.GetAbsoluteFilePath(System.String,System.String)">
+            <summary>
+            get the matching file for a substring of the file name
+            </summary>
+            <param name="partialFN">a part of the file name to look for</param>
+            <param name="basedir">The basedir.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.FileExtras.GenerateRandomFileName(System.String)">
+            <summary>
+            Generates the random name of the file.
+            </summary>
+            <param name="fileextension">The fileextension.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.ClassExtras.ExpandoObjectExtras">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ExpandoObjectExtras.ToDictionary(System.Dynamic.ExpandoObject)">
+            <summary>
+            To a dictionary.
+            </summary>
+            <param name="item">The item.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ExpandoObjectExtras.ToDictionary(System.Object)">
+            <summary>
+            To a dictionary.
+            </summary>
+            <param name="item">The item.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ExpandoObjectExtras.ToExpando(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Extension method that turns a dictionary of string and object to an ExpandoObject
+            </summary>
+            <param name="dictionary">The dictionary.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.ClassExtras.SaveFileDialogExtras">
+            <summary>
+                example usage: https://github.com/andreigec/Histogram-OCR-Trainer
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.SaveFileDialogExtras.createFilter(System.Collections.Generic.List{System.Tuple{System.String,System.String}})">
+            <summary>
+            create the SFD filter string
+            </summary>
+            <param name="descAndExt">tuple with description, fileext eg: JPeg Image, *.jpg</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.SaveFileDialogExtras.createFilter(System.String,System.String)">
+            <summary>
+            create the SFD filter string
+            </summary>
+            <param name="description">eg: JPeg Image</param>
+            <param name="extension">eg  *.jpg</param>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.ClassExtras.TextboxExtras">
+            <summary>
+                example usage: https://github.com/andreigec/Squarification
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.TextboxExtras.ScrollToEnd(System.Windows.Forms.TextBox)">
+            <summary>
+            Scrolls to end.
+            </summary>
+            <param name="tb">The tb.</param>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.TextboxExtras.GetSelection(System.Windows.Forms.Control)">
+            <summary>
+            Gets the selection.
+            </summary>
+            <param name="c">The c.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.TextboxExtras.GetFutureTextBoxAfterKeyPress(System.Char,System.Windows.Forms.Control)">
+            <summary>
+            Gets the future text box after key press.
+            </summary>
+            <param name="keyChar">The key character.</param>
+            <param name="c">The c.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.TextboxExtras.HandleInputAsFloat(System.Char,System.Windows.Forms.Control)">
+            <summary>
+            quick handle for floats - Connect to keyboard-keypress event. Pass in KeyChar, and make the return value =
+            e.Handled
+            </summary>
+            <param name="keyChar">The key character.</param>
+            <param name="c">e.KeyChar</param>
+            <returns>
+            e.Handled
+            </returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.TextboxExtras.IsSpecial(System.Char,System.Windows.Forms.Control)">
+            <summary>
+            Determines whether the specified key character is special.
+            </summary>
+            <param name="keyChar">The key character.</param>
+            <param name="c">The c.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.TextboxExtras.HandleInput(ANDREICSLIB.ClassExtras.TextboxExtras.InputType,System.Char,System.Windows.Forms.Control)">
+            <summary>
+            Quick keyboard handling of fields - Connect to keyboard-keypress event. Pass in KeyChar, and make the return value
+            = e.Handled
+            </summary>
+            <param name="IT">the input type</param>
+            <param name="keyChar">e.KeyChar</param>
+            <param name="c">ref to the textbox/combobox for ctrl+a keys, not required</param>
+            <returns>
+            e.Handled
+            </returns>
+        </member>
+        <member name="T:ANDREICSLIB.ClassExtras.TextboxExtras.InputType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.TextboxExtras.InputType.Create(System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Creates the specified allow chars.
+            </summary>
+            <param name="AllowChars">if set to <c>true</c> [allow chars].</param>
+            <param name="AllowNumbers">if set to <c>true</c> [allow numbers].</param>
+            <param name="AllowDot">if set to <c>true</c> [allow dot].</param>
+            <param name="AllowWhiteSpace">if set to <c>true</c> [allow white space].</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.TextboxExtras.InputType.CreateAllTrue">
+            <summary>
+            set all types to input param
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.ClassExtras.ListViewExtras">
+            <summary>
+                example usage: https://github.com/andreigec/Consultant-Plus
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ListViewExtras.SubItemCollectionToRange(System.Windows.Forms.ListViewItem.ListViewSubItemCollection)">
+            <summary>
+            Subs the item collection to range.
+            </summary>
+            <param name="lvsic">The lvsic.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ListViewExtras.SwapIndicies(System.Windows.Forms.ListView,System.Int32,System.Int32)">
+            <summary>
+            swap two rows given by their index
+            </summary>
+            <param name="lv">The lv.</param>
+            <param name="index1">First Index to Swap</param>
+            <param name="index2">Second Index to Swap</param>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ListViewExtras.AutoResizeListViewColumn(System.Windows.Forms.ListView,System.Windows.Forms.ColumnHeader)">
+            <summary>
+            Automatics the resize ListView column.
+            </summary>
+            <param name="lv">The lv.</param>
+            <param name="ch">The ch.</param>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ListViewExtras.AutoResize(System.Windows.Forms.ListView)">
+            <summary>
+            resize all columns to best fit the header and the contents
+            </summary>
+            <param name="lv">The lv.</param>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ListViewExtras.InitColumnHeaders(System.Windows.Forms.ListView,System.Collections.Generic.List{System.String})">
+            <summary>
+            Initialise the columns to be those in a list of strings
+            </summary>
+            <param name="lv">The lv.</param>
+            <param name="columnList">The list of strings to be made columns of</param>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ListViewExtras.InitColumnHeaders(System.Windows.Forms.ListView,System.Type)">
+            <summary>
+            init the column headers from a class' public variables
+            </summary>
+            <param name="lv">The lv.</param>
+            <param name="ty">The ty.</param>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ListViewExtras.SelectAllItems(System.Windows.Forms.ListView)">
+            <summary>
+            Select all the items in the list view
+            </summary>
+            <param name="lv">The lv.</param>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ListViewExtras.GetColumnNumber(System.Windows.Forms.ListView,System.String,System.String)">
+            <summary>
+            get the index of a column name
+            </summary>
+            <param name="lv">The lv.</param>
+            <param name="columnName">the column name</param>
+            <param name="LVIField">The lvi field.</param>
+            <returns>
+            the index of the column, -1 if not found
+            </returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ListViewExtras.CopyClassToListView(System.Windows.Forms.ListView,System.Object,System.Windows.Forms.ListViewItem)">
+            <summary>
+            add a line item comparing the header text with the object field names
+            </summary>
+            <param name="lv">The lv.</param>
+            <param name="classInstance">The class instance.</param>
+            <param name="overwrite">The overwrite.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ListViewExtras.SetColumn(System.Windows.Forms.ListView,System.Windows.Forms.ListViewItem,System.String,System.String,System.String)">
+            <summary>
+            Sets the column.
+            </summary>
+            <param name="lv">The lv.</param>
+            <param name="lvi">The lvi.</param>
+            <param name="columnName">Name of the column.</param>
+            <param name="columnValue">The column value.</param>
+            <param name="LVIField">The lvi field.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ListViewExtras.GetColumn(System.Windows.Forms.ListView,System.Windows.Forms.ListViewItem,System.String,System.String)">
+            <summary>
+            Gets the column.
+            </summary>
+            <param name="lv">The lv.</param>
+            <param name="lvi">The lvi.</param>
+            <param name="columnName">Name of the column.</param>
+            <param name="LVIField">The lvi field.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ListViewExtras.EnsureSubItemCount(System.Windows.Forms.ListView,System.Windows.Forms.ListViewItem)">
+            <summary>
+            make the LVI subitem count match the column count
+            </summary>
+            <param name="lv">The lv.</param>
+            <param name="lvi">The lvi.</param>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ListViewExtras.GetObjectsFromListViewItems(System.Windows.Forms.ListView,System.Type)">
+            <summary>
+            Gets the objects from ListView items.
+            </summary>
+            <param name="lv">The lv.</param>
+            <param name="ty">The ty.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ListViewExtras.GetObjectFromListViewItem(System.Windows.Forms.ListView,System.Windows.Forms.ListViewItem,System.Type)">
+            <summary>
+            Gets the object from ListView item.
+            </summary>
+            <param name="lv">The lv.</param>
+            <param name="LVI">The lvi.</param>
+            <param name="ty">The ty.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ListViewExtras.GetListViewItemRowValuesAndColumnName(System.Windows.Forms.ListView,System.Windows.Forms.ListViewItem,System.String)">
+            <summary>
+            returns a tuple of column header name, and the row value for this LVI
+            </summary>
+            <param name="lv">The lv.</param>
+            <param name="LVI">The lvi.</param>
+            <param name="LVIField">The lvi field.</param>
+            <returns>
+            column header name,row value
+            </returns>
+        </member>
+        <member name="T:ANDREICSLIB.ClassExtras.ObjectExtras">
+            <summary>
+                example usage: https://github.com/andreigec/Image-Scripter
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ObjectExtras.AddToolTip(System.Windows.Forms.Control,System.String)">
+            <summary>
+            Add a tooltip to a control
+            </summary>
+            <param name="C">the control to add the tooltip to</param>
+            <param name="text">the tooltip text</param>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ObjectExtras.Clone``1(``0)">
+            <summary>
+            Perform a deep Copy of the object.
+            </summary>
+            <typeparam name="T">The type of object being copied.</typeparam>
+            <param name="source">The object instance to copy.</param>
+            <returns>
+            The copied object.
+            </returns>
+            <exception cref="T:System.ArgumentException">The type must be serializable.;source</exception>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ObjectExtras.CloneObject(System.Object)">
+            <summary>
+            Clones the object.
+            </summary>
+            <param name="o">The o.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ObjectExtras.GetFieldByName``1(System.Object,System.String)">
+            <summary>
+            Gets the name of the field by.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="instance">The instance.</param>
+            <param name="fieldName">Name of the field.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.ClassExtras.MathExtras">
+            <summary>
+                example usage: https://github.com/andreigec/Meal-Chooser
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.MathExtras.Floor(System.Int32)">
+            <summary>
+            Floors the specified v.
+            </summary>
+            <param name="v">The v.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.MathExtras.Ceiling(System.Int32)">
+            <summary>
+            Ceilings the specified v.
+            </summary>
+            <param name="v">The v.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.MathExtras.ConvertMatrix(System.Drawing.Drawing2D.Matrix)">
+            <summary>
+            Converts the matrix.
+            </summary>
+            <param name="DrawingMatrix">The drawing matrix.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.MathExtras.ConvertMatrix(System.Windows.Media.Matrix)">
+            <summary>
+            Converts the matrix.
+            </summary>
+            <param name="MediaMatrix">The media matrix.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.MathExtras.Truncate(System.Double,System.Int32)">
+            <summary>
+            Truncates the specified inval.
+            </summary>
+            <param name="inval">The inval.</param>
+            <param name="length">The length.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.ClassExtras.StringExtras">
+            <summary>
+                example usage: https://github.com/andreigec/Folder-View
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.StringExtras.ToStream(System.String)">
+            <summary>
+            convert a string to a stream
+            </summary>
+            <param name="s">The s.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.StringExtras.GetMD5OfString(System.String)">
+            <summary>
+            Gets the md5 of string.
+            </summary>
+            <param name="s">The s.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.StringExtras.GetMd5Hash(System.Security.Cryptography.MD5,System.String)">
+            <summary>
+            Gets the MD5 hash.
+            </summary>
+            <param name="md5Hash">The MD5 hash.</param>
+            <param name="input">The input.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.StringExtras.SplitString(System.String,System.String,System.Boolean)">
+            <summary>
+            Splits the string.
+            </summary>
+            <param name="instr">The instr.</param>
+            <param name="split">The split.</param>
+            <param name="removeempty">if set to <c>true</c> [removeempty].</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.StringExtras.SplitTwo(System.String,System.Char)">
+            <summary>
+            Splits the two.
+            </summary>
+            <param name="instr">The instr.</param>
+            <param name="sep">The sep.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.StringExtras.SplitTwoInt(System.String,System.Char)">
+            <summary>
+            Splits the two int.
+            </summary>
+            <param name="instr">The instr.</param>
+            <param name="sep">The sep.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.StringExtras.ContainsSubStringCount(System.String,System.String)">
+            <summary>
+            count how many occurences of a substring occur in a string
+            </summary>
+            <param name="instr">The instr.</param>
+            <param name="substring">The substring.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.StringExtras.SplitStrings(System.String,System.Int32)">
+            <summary>
+            Split a long string into separate lines based on a max length
+            </summary>
+            <param name="instr">The instr.</param>
+            <param name="max">The maximum.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.StringExtras.PadString(System.String,System.Int32)">
+            <summary>
+            Truncate or pad a string with spaces to a certain length
+            </summary>
+            <param name="instr">The instr.</param>
+            <param name="maxlen">The maxlen.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.StringExtras.Truncate(System.String,System.Int32,System.String)">
+            <summary>
+            Truncates the specified instr.
+            </summary>
+            <param name="instr">The instr.</param>
+            <param name="maxlen">The maxlen.</param>
+            <param name="trucatedend">The trucatedend.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.StringExtras.ReplaceCharAtPosition(System.String@,System.Char,System.Int32)">
+            <summary>
+                Replace a char in a string with another
+            </summary>
+            <param name="str">The string to change a character in</param>
+            <param name="newChar">The new character to be used</param>
+            <param name="position">The position to use the new character</param>
+            <returns>a string with the character replaced</returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.StringExtras.ReplaceStringAtPosition(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            replace a length of string in a string with another string
+            </summary>
+            <param name="str">The string.</param>
+            <param name="newstr">The newstr.</param>
+            <param name="startpos">The startpos.</param>
+            <param name="endpos">The endpos.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.StringExtras.ReplaceAllChars(System.String,System.Char,System.Char)">
+            <summary>
+            Replace all instances of a char with another char
+            </summary>
+            <param name="origString">The original string.</param>
+            <param name="replaceThis">The replace this.</param>
+            <param name="withThis">The with this.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.StringExtras.ReplaceAllChars(System.String,System.String,System.String)">
+            <summary>
+            Replaces all chars.
+            </summary>
+            <param name="origString">The original string.</param>
+            <param name="replaceThis">The replace this.</param>
+            <param name="withThis">The with this.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.StringExtras.RemoveAllNonAlphabetChars(System.String)">
+            <summary>
+            Removes all non alphabet chars.
+            </summary>
+            <param name="origString">The original string.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.StringExtras.ReplaceAllChars(System.String,System.String,System.Char)">
+            <summary>
+            Replaces all chars.
+            </summary>
+            <param name="origString">The original string.</param>
+            <param name="replaceTheseChars">The replace these chars.</param>
+            <param name="withThis">The with this.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.StringExtras.ApplyTrim(System.String,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            Trim a string of a certain number of chars, either from the start or the end
+            </summary>
+            <param name="origString">The original string.</param>
+            <param name="isFront">if set to <c>true</c> [is front].</param>
+            <param name="length">The length.</param>
+            <param name="relativeStart">front=true, start=relativestart. front=end, start=end-length+relativestart</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.StringExtras.MergeWhiteSpace(System.String,System.Char)">
+            <summary>
+            merges all consecutive whitespace into one character
+            </summary>
+            <param name="origString">The original string.</param>
+            <param name="mergeTo">The merge to.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.StringExtras.CleanString(System.String)">
+            <summary>
+            removes \n \r and \0 from the start and end of a string
+            </summary>
+            <param name="origString">The original string.</param>
+            <returns>
+            the 'cleaned' string
+            </returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.StringExtras.AddText(System.String,System.String,System.Boolean)">
+            <summary>
+            append/prepend text to a string
+            </summary>
+            <param name="origString">The original string.</param>
+            <param name="addText">The add text.</param>
+            <param name="isFront">if set to <c>true</c> [is front].</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.StringExtras.ToCamelCase(System.String,System.Boolean,System.Collections.Generic.List{System.String},System.Boolean)">
+            <summary>
+            Auto capitalise a string - first letter in each word is capitalised, rest are lower case
+            </summary>
+            <param name="origString">The string to change</param>
+            <param name="capitaliseInitial">Should the first letter be capitalised?</param>
+            <param name="capitaliseWordString">The capitalise word string.</param>
+            <param name="spaceAfter">if set to <c>true</c> [space after].</param>
+            <returns>
+            the auto capitalised string
+            </returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.StringExtras.StringIsNumber(System.String)">
+            <summary>
+            Strings the is number.
+            </summary>
+            <param name="s">The s.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.StringExtras.StringStartsWithLetter(System.String)">
+            <summary>
+            Strings the starts with letter.
+            </summary>
+            <param name="s">The s.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.StringExtras.RemoveComments(System.String)">
+            <summary>
+            remove comment lines etc
+            </summary>
+            <param name="multiline">The multiline.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.StringExtras.GetFirstRepetition(System.String,System.String,System.Int32)">
+            <summary>
+            get first block of repetitions in string
+            </summary>
+            <param name="instr">The instr.</param>
+            <param name="pattern">The pattern.</param>
+            <param name="minCount">The minimum count.</param>
+            <returns>
+            count,start position, end pos - must be more than mincount
+            </returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.StringExtras.Trim(System.String,System.String,System.Char[],System.StringComparison)">
+            <summary>
+            Trims the specified refstr.
+            </summary>
+            <param name="s">The s.</param>
+            <param name="refstr">The refstr.</param>
+            <param name="trimchars">The trimchars.</param>
+            <param name="sc">The sc.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.StringExtras.IsNullOrEmpty(System.String)">
+            <summary>
+            Determines whether [is null or empty].
+            </summary>
+            <param name="s">The s.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.ClassExtras.NetExtras">
+            <summary>
+                example usage: https://github.com/andreigec/ExtractTransform
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.NetExtras.MakeStringURLSafe(System.String)">
+            <summary>
+            Makes the string URL safe.
+            </summary>
+            <param name="instr">The instr.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.NetExtras.DownloadFile(System.String,System.String)">
+            <summary>
+            Downloads the file.
+            </summary>
+            <param name="url">The URL.</param>
+            <param name="filename">The filename.</param>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.NetExtras.DownloadWebPage(System.String)">
+            <summary>
+            Downloads the web page.
+            </summary>
+            <param name="url">The URL.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.NetExtras.GetWebPageStream(System.String)">
+            <summary>
+            Gets the web page stream.
+            </summary>
+            <param name="url">The URL.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.NetExtras.GetHostName(System.Net.IPAddress)">
+            <summary>
+            Gets the name of the host.
+            </summary>
+            <param name="externalIP">The external ip.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.NetExtras.IsLanIP(System.Net.IPAddress)">
+            <summary>
+            Determines whether [is lan ip] [the specified address].
+            </summary>
+            <param name="address">The address.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.NetExtras.IsLanIPCheckTTL(System.Net.IPAddress)">
+            <summary>
+            Determines whether [is lan ip check TTL] [the specified address].
+            </summary>
+            <param name="address">The address.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.NetExtras.CheckMask(System.Net.IPAddress,System.Net.IPAddress,System.Net.IPAddress)">
+            <summary>
+            Checks the mask.
+            </summary>
+            <param name="address">The address.</param>
+            <param name="mask">The mask.</param>
+            <param name="target">The target.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.NetExtras.IsIPAddress(System.String)">
+            <summary>
+            Determines whether [is ip address] [the specified s].
+            </summary>
+            <param name="s">The s.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.NetExtras.HostnameToIP(System.String,System.Boolean)">
+            <summary>
+            Hostnames to ip.
+            </summary>
+            <param name="hostName">Name of the host.</param>
+            <param name="asIPV4">if set to <c>true</c> [as ip v4].</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.NetExtras.GetExternalDefaultLocalAddress(System.String)">
+            <summary>
+            Gets the external default local address.
+            </summary>
+            <param name="WebCheckIPURL">The web check ipurl.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.NetExtras.GetLocalAddress">
+            <summary>
+            Gets the local address.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.NetExtras.GetExternalAddress(System.String)">
+            <summary>
+            Gets the external address.
+            </summary>
+            <param name="WebCheckIPURL">The web check ipurl.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.NetExtras.IPToLong(System.Net.IPAddress)">
+            <summary>
+            Ips to long.
+            </summary>
+            <param name="ip">The ip.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.NetExtras.GetMAC(System.Net.IPAddress)">
+            <summary>
+            Gets the mac.
+            </summary>
+            <param name="ip">The ip.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.NetExtras.GetNetBiosInfo(System.Net.IPAddress)">
+            <summary>
+            Gets the net bios information.
+            </summary>
+            <param name="ip">The ip.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.NetExtras.GetRemoteInfo(System.Net.IPAddress,System.String,System.Int32)">
+            <summary>
+            Gets the remote information.
+            </summary>
+            <param name="ip">The ip.</param>
+            <param name="hostname">The hostname.</param>
+            <param name="extraInfoTimeout">The extra information timeout.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.NetExtras.GetNextFreePort(System.Int32,System.Int32)">
+            <summary>
+            Gets the next free port.
+            </summary>
+            <param name="min">The minimum.</param>
+            <param name="max">The maximum.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.ClassExtras.NetExtras.WebClientEx">
+            <summary>
+                add timeout to web client
+            </summary>
+        </member>
+        <member name="P:ANDREICSLIB.ClassExtras.NetExtras.WebClientEx.Timeout">
+            <summary>
+                timeout in MS
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.NetExtras.WebClientEx.GetWebRequest(System.Uri)">
+            <summary>
+            Gets the web request.
+            </summary>
+            <param name="address">The address.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.ClassExtras.NetExtras.NetBiosInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ANDREICSLIB.ClassExtras.NetExtras.NetBiosInfo.ComputerName">
+            <summary>
+            Gets or sets the name of the computer.
+            </summary>
+            <value>
+            The name of the computer.
+            </value>
+        </member>
+        <member name="P:ANDREICSLIB.ClassExtras.NetExtras.NetBiosInfo.LANGroup">
+            <summary>
+            Gets or sets the lan group.
+            </summary>
+            <value>
+            The lan group.
+            </value>
+        </member>
+        <member name="P:ANDREICSLIB.ClassExtras.NetExtras.NetBiosInfo.PlatformID">
+            <summary>
+            Gets or sets the platform identifier.
+            </summary>
+            <value>
+            The platform identifier.
+            </value>
+        </member>
+        <member name="P:ANDREICSLIB.ClassExtras.NetExtras.NetBiosInfo.VerMajor">
+            <summary>
+            Gets or sets the ver major.
+            </summary>
+            <value>
+            The ver major.
+            </value>
+        </member>
+        <member name="P:ANDREICSLIB.ClassExtras.NetExtras.NetBiosInfo.VerMinor">
+            <summary>
+            Gets or sets the ver minor.
+            </summary>
+            <value>
+            The ver minor.
+            </value>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.NetExtras.NetBiosInfo.#ctor(ANDREICSLIB.ClassExtras.NetExtras.WKSTA_INFO_100)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ANDREICSLIB.ClassExtras.NetExtras.NetBiosInfo"/> class.
+            </summary>
+            <param name="w">The w.</param>
+        </member>
+        <member name="T:ANDREICSLIB.ClassExtras.NetExtras.WKSTA_INFO_100">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ANDREICSLIB.ClassExtras.NetExtras.WKSTA_INFO_100.wki100_platform_id">
+            <summary>
+            Gets or sets the wki100_platform_id.
+            </summary>
+            <value>
+            The wki100_platform_id.
+            </value>
+        </member>
+        <member name="F:ANDREICSLIB.ClassExtras.NetExtras.WKSTA_INFO_100.wki100_computername">
+            <summary>
+            The wki100_computername
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.ClassExtras.NetExtras.WKSTA_INFO_100.wki100_langroup">
+            <summary>
+            The wki100_langroup
+            </summary>
+        </member>
+        <member name="P:ANDREICSLIB.ClassExtras.NetExtras.WKSTA_INFO_100.wki100_ver_major">
+            <summary>
+            Gets or sets the wki100_ver_major.
+            </summary>
+            <value>
+            The wki100_ver_major.
+            </value>
+        </member>
+        <member name="P:ANDREICSLIB.ClassExtras.NetExtras.WKSTA_INFO_100.wki100_ver_minor">
+            <summary>
+            Gets or sets the wki100_ver_minor.
+            </summary>
+            <value>
+            The wki100_ver_minor.
+            </value>
+        </member>
+        <member name="T:ANDREICSLIB.ClassExtras.ZipExtras">
+            <summary>
+                example usage: https://github.com/andreigec/Dwarf-Fortress-Mod-Merger
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ZipExtras.ExtractZipFile(System.String,System.String,System.String)">
+            <summary>
+            Extracts the zip file.
+            </summary>
+            <param name="archiveFilenameIn">The archive filename in.</param>
+            <param name="outFolder">The out folder.</param>
+            <param name="password">The password.</param>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ZipExtras.CompressString(System.String)">
+            <summary>
+            Compresses the string.
+            </summary>
+            <param name="text">The text.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassExtras.ZipExtras.DecompressString(System.String)">
+            <summary>
+            Decompresses the string.
+            </summary>
+            <param name="compressedText">The compressed text.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.Extracters.DynamicJsonConverter">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:System.Web.Script.Serialization.JavaScriptConverter" />
+        </member>
+        <member name="P:ANDREICSLIB.Extracters.DynamicJsonConverter.SupportedTypes">
+            <summary>
+            When overridden in a derived class, gets a collection of the supported types.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.Extracters.DynamicJsonConverter.Deserialize(System.Collections.Generic.IDictionary{System.String,System.Object},System.Type,System.Web.Script.Serialization.JavaScriptSerializer)">
+            <summary>
+            Deserializes the specified dictionary.
+            </summary>
+            <param name="dictionary">The dictionary.</param>
+            <param name="type">The type.</param>
+            <param name="serializer">The serializer.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">dictionary</exception>
+        </member>
+        <member name="M:ANDREICSLIB.Extracters.DynamicJsonConverter.Serialize(System.Object,System.Web.Script.Serialization.JavaScriptSerializer)">
+            <summary>
+            Serializes the specified object.
+            </summary>
+            <param name="obj">The object.</param>
+            <param name="serializer">The serializer.</param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:ANDREICSLIB.Extracters.DynamicJsonConverter.DynamicJsonObject">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:System.Dynamic.DynamicObject" />
+        </member>
+        <member name="M:ANDREICSLIB.Extracters.DynamicJsonConverter.DynamicJsonObject.#ctor(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Initializes a new instance of the <see cref="T:ANDREICSLIB.Extracters.DynamicJsonConverter.DynamicJsonObject" /> class.
+            </summary>
+            <param name="dictionary">The dictionary.</param>
+            <exception cref="T:System.ArgumentNullException">dictionary</exception>
+        </member>
+        <member name="P:ANDREICSLIB.Extracters.DynamicJsonConverter.DynamicJsonObject._dictionary">
+            <summary>
+            Gets the _dictionary.
+            </summary>
+            <value>
+            The _dictionary.
+            </value>
+        </member>
+        <member name="M:ANDREICSLIB.Extracters.DynamicJsonConverter.DynamicJsonObject.op_Implicit(ANDREICSLIB.Extracters.DynamicJsonConverter.DynamicJsonObject)~System.Collections.Generic.Dictionary{System.String,System.Object}">
+            <summary>
+            Performs an implicit conversion />.
+            </summary>
+            <param name="d">The d.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
+        </member>
+        <member name="M:ANDREICSLIB.Extracters.DynamicJsonConverter.DynamicJsonObject.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+        </member>
+        <member name="M:ANDREICSLIB.Extracters.DynamicJsonConverter.DynamicJsonObject.ToString(System.Text.StringBuilder)">
+            <summary>
+            To the string.
+            </summary>
+            <param name="sb">The sb.</param>
+        </member>
+        <member name="M:ANDREICSLIB.Extracters.DynamicJsonConverter.DynamicJsonObject.TryGetMember(System.Dynamic.GetMemberBinder,System.Object@)">
+            <summary>
+            Tries the get member.
+            </summary>
+            <param name="binder">The binder.</param>
+            <param name="result">The result.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Extracters.DynamicJsonConverter.DynamicJsonObject.TryGetIndex(System.Dynamic.GetIndexBinder,System.Object[],System.Object@)">
+            <summary>
+            Tries the index of the get.
+            </summary>
+            <param name="binder">The binder.</param>
+            <param name="indexes">The indexes.</param>
+            <param name="result">The result.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Extracters.DynamicJsonConverter.DynamicJsonObject.WrapResultObject(System.Object)">
+            <summary>
+            Wraps the result object.
+            </summary>
+            <param name="result">The result.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.Extracters.IExtract">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.Extracters.IExtract.Extract(System.String)">
+            <summary>
+            Extracts the specified content.
+            </summary>
+            <param name="content">The content.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Extracters.IExtract.DownloadPage(System.String,System.String,System.String,System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            Downloads the page.
+            </summary>
+            <param name="url">The URL.</param>
+            <param name="params">The parameters.</param>
+            <param name="method">The method.</param>
+            <param name="cookies">The cookies.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.Extracters.JSONExtract">
+            <summary>
+                download a webpage as json, and convert json to a dictionary
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.Extracters.JSONExtract.DownloadPage(System.String,System.String,System.String,System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            Downloads the page.
+            </summary>
+            <param name="url">The URL.</param>
+            <param name="params">The parameters.</param>
+            <param name="method">The method.</param>
+            <param name="cookies">The cookies.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Extracters.JSONExtract.Extract(System.String)">
+            <summary>
+            Extracts the specified content.
+            </summary>
+            <param name="content">The content.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.Extracters.JsonRequest">
+            <summary>
+                Create Http Request, using json, and read Http Response.
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.Extracters.JsonRequest.CookieContainer">
+            <summary>
+            The cookie container
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.Extracters.JsonRequest.#ctor(System.String,System.String)">
+            <summary>
+                Constructor Overload that allows passing URL and the VERB to be used.
+            </summary>
+            <param name="url">URL which request will be created</param>
+            <param name="verb">Http Verb that will be userd in this request</param>
+        </member>
+        <member name="M:ANDREICSLIB.Extracters.JsonRequest.#ctor">
+            <summary>
+                Default constructor overload without any paramter
+            </summary>
+        </member>
+        <member name="P:ANDREICSLIB.Extracters.JsonRequest.URL">
+            <summary>
+                Url of http server wich request will be created to.
+            </summary>
+        </member>
+        <member name="P:ANDREICSLIB.Extracters.JsonRequest.Verb">
+            <summary>
+                HTTP Verb wich will be used. Eg. GET, POST, PUT, DELETE.
+            </summary>
+        </member>
+        <member name="P:ANDREICSLIB.Extracters.JsonRequest.Content">
+            <summary>
+                Request content, Json by default.
+            </summary>
+        </member>
+        <member name="P:ANDREICSLIB.Extracters.JsonRequest.Credentials">
+            <summary>
+            User and Password for Basic Authentication
+            </summary>
+            <value>
+            The credentials.
+            </value>
+        </member>
+        <member name="P:ANDREICSLIB.Extracters.JsonRequest.HttpRequest">
+            <summary>
+            Gets the HTTP request.
+            </summary>
+            <value>
+            The HTTP request.
+            </value>
+        </member>
+        <member name="P:ANDREICSLIB.Extracters.JsonRequest.HttpResponse">
+            <summary>
+            Gets the HTTP response.
+            </summary>
+            <value>
+            The HTTP response.
+            </value>
+        </member>
+        <member name="M:ANDREICSLIB.Extracters.JsonRequest.Execute(System.String,System.Object,System.String,System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            Executes the specified URL.
+            </summary>
+            <param name="url">The URL.</param>
+            <param name="obj">The object.</param>
+            <param name="verb">The verb.</param>
+            <param name="Cookies">The cookies.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Extracters.JsonRequest.Execute(System.String)">
+            <summary>
+            Executes the specified URL.
+            </summary>
+            <param name="url">The URL.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Extracters.JsonRequest.Execute">
+            <summary>
+            Executes this instance.
+            </summary>
+            <returns></returns>
+            <exception cref="T:System.ArgumentException">URL cannot be null.</exception>
+        </member>
+        <member name="M:ANDREICSLIB.Extracters.JsonRequest.CreateRequest">
+            <summary>
+            Creates the request.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Extracters.JsonRequest.WriteStream(System.Object)">
+            <summary>
+            Writes the stream.
+            </summary>
+            <param name="obj">The object.</param>
+        </member>
+        <member name="M:ANDREICSLIB.Extracters.JsonRequest.ReadResponse">
+            <summary>
+            Reads the response.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Extracters.JsonRequest.ReadResponseFromError(System.Net.WebException)">
+            <summary>
+            Reads the response from error.
+            </summary>
+            <param name="error">The error.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Extracters.JsonRequest.EncodeCredentials(ANDREICSLIB.Extracters.Credentials)">
+            <summary>
+            Encodes the credentials.
+            </summary>
+            <param name="credentials">The credentials.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.Extracters.Credentials">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ANDREICSLIB.Extracters.Credentials.UserName">
+            <summary>
+            Gets or sets the name of the user.
+            </summary>
+            <value>
+            The name of the user.
+            </value>
+        </member>
+        <member name="P:ANDREICSLIB.Extracters.Credentials.Password">
+            <summary>
+            Gets or sets the password.
+            </summary>
+            <value>
+            The password.
+            </value>
+        </member>
+        <member name="T:ANDREICSLIB.Helpers.AsyncHelpers">
+            <summary>
+                example usage: https://github.com/andreigec/Backgrounder
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.AsyncHelpers.RunSync(System.Func{System.Threading.Tasks.Task})">
+            <summary>
+            Runs the synchronize.
+            </summary>
+            <param name="task">The task.</param>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.AsyncHelpers.RunSync``1(System.Func{System.Threading.Tasks.Task{``0}})">
+            <summary>
+            Runs the synchronize.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="task">The task.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.AsyncHelpers.ExclusiveSynchronizationContext.Send(System.Threading.SendOrPostCallback,System.Object)">
+            <summary>
+            Sends the specified d.
+            </summary>
+            <param name="d">The d.</param>
+            <param name="state">The state.</param>
+            <exception cref="T:System.NotSupportedException">We cannot send to our same thread</exception>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.AsyncHelpers.ExclusiveSynchronizationContext.Post(System.Threading.SendOrPostCallback,System.Object)">
+            <summary>
+            Posts the specified d.
+            </summary>
+            <param name="d">The d.</param>
+            <param name="state">The state.</param>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.AsyncHelpers.ExclusiveSynchronizationContext.EndMessageLoop">
+            <summary>
+            Ends the message loop.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.AsyncHelpers.ExclusiveSynchronizationContext.BeginMessageLoop">
+            <summary>
+            Begins the message loop.
+            </summary>
+            <exception cref="T:System.AggregateException">AsyncHelpers.Run method threw an exception.</exception>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.AsyncHelpers.ExclusiveSynchronizationContext.CreateCopy">
+            <summary>
+            When overridden in a derived class, creates a copy of the synchronization context.
+            </summary>
+            <returns>
+            A new <see cref="T:System.Threading.SynchronizationContext" /> object.
+            </returns>
+        </member>
+        <member name="T:ANDREICSLIB.Helpers.ICache">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.ICache.Cache(System.Linq.Expressions.Expression{System.Func{System.Threading.Tasks.Task{System.String}}},System.Boolean,System.String)">
+            <summary>
+                pass in an async function that returns a string - can compress if type is known
+            </summary>
+            <param name="action"></param>
+            <param name="compress"></param>
+            <param name="memberName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.ICache.Cache``1(System.Linq.Expressions.Expression{System.Func{System.Threading.Tasks.Task{``0}}},System.String)">
+            <summary>
+                pass in an async function that takes T
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="action"></param>
+            <param name="memberName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.ICache.Cache``1(System.Linq.Expressions.Expression{System.Func{``0}},System.String)">
+            <summary>
+                pass in a sync function
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="action"></param>
+            <param name="memberName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.ICache.Get``1(System.String)">
+            <summary>
+                return a value using a key
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="cacheKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.ICache.Set``1(System.String,``0)">
+            <summary>
+                set a value using a key and a value
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.Helpers.ListViewSorter">
+            <summary>
+                example usage: https://github.com/andreigec/IP-Scanrar
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.Helpers.ListViewSorter.Enabled">
+            <summary>
+            The enabled
+            </summary>
+        </member>
+        <member name="P:ANDREICSLIB.Helpers.ListViewSorter.ByColumn">
+            <summary>
+            Gets or sets the by column.
+            </summary>
+            <value>
+            The by column.
+            </value>
+        </member>
+        <member name="P:ANDREICSLIB.Helpers.ListViewSorter.LastSort">
+            <summary>
+            Gets or sets the last sort.
+            </summary>
+            <value>
+            The last sort.
+            </value>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.ListViewSorter.Compare(System.Object,System.Object)">
+            <summary>
+            Compares the specified o1.
+            </summary>
+            <param name="o1">The o1.</param>
+            <param name="o2">The o2.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.ListViewSorter.ColumnSort(ANDREICSLIB.Helpers.ListViewSorter,System.Windows.Forms.ListView,System.Int32,System.Nullable{System.Windows.Forms.SortOrder})">
+            <summary>
+            call this from column click.
+            </summary>
+            <param name="lvs">an instance of listviewsorter</param>
+            <param name="lv">The lv.</param>
+            <param name="column">The column.</param>
+            <param name="forceorder">if set to a value, will sort by that all the time, otherwise will sort as normal</param>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.ListViewSorter.CompareNatural(System.String,System.String)">
+            <summary>
+            Compares the natural.
+            </summary>
+            <param name="x">The x.</param>
+            <param name="y">The y.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.Helpers.Networking">
+            <summary>
+                example usage: https://github.com/andreigec/FireWind
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.Networking.STUNServer(System.Int32,System.Int32)">
+            <summary>
+            Stuns the server.
+            </summary>
+            <param name="listenPort">The listen port.</param>
+            <param name="sleepMS">The sleep ms.</param>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.Networking.SendUDPPacketGetBlockingResponse(System.Net.IPAddress,System.Int32,System.Byte[])">
+            <summary>
+            Sends the UDP packet get blocking response.
+            </summary>
+            <param name="address">The address.</param>
+            <param name="port">The port.</param>
+            <param name="data">The data.</param>
+            <returns></returns>
+        </member>
+        <member name="P:ANDREICSLIB.Helpers.Networking.UDPListener">
+            <summary>
+            Gets or sets the UDP listener.
+            </summary>
+            <value>
+            The UDP listener.
+            </value>
+        </member>
+        <member name="P:ANDREICSLIB.Helpers.Networking.UDPSenders">
+            <summary>
+            Gets or sets the UDP senders.
+            </summary>
+            <value>
+            The UDP senders.
+            </value>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.Networking.AddUdpClient(System.Int32,System.String,System.Int32)">
+            <summary>
+            Adds the UDP client.
+            </summary>
+            <param name="udpPort">The UDP port.</param>
+            <param name="ip">The ip.</param>
+            <param name="receiveTimeout">The receive timeout.</param>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.Networking.GetSocketInfo(System.Net.Sockets.UdpClient)">
+            <summary>
+            Gets the socket information.
+            </summary>
+            <param name="uc">The uc.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.Networking.StopUDPClient(System.Net.Sockets.UdpClient)">
+            <summary>
+            Stops the UDP client.
+            </summary>
+            <param name="udpClient">The UDP client.</param>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.Networking.StopAll">
+            <summary>
+            Stops all.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.Networking.StopAllUDP">
+            <summary>
+            Stops all UDP.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.Networking.SetUDPTimeout(System.Net.Sockets.UdpClient,System.Int32)">
+            <summary>
+            Sets the UDP timeout.
+            </summary>
+            <param name="uc">The uc.</param>
+            <param name="timeout">The timeout.</param>
+        </member>
+        <member name="T:ANDREICSLIB.Helpers.BTree">
+            <summary>
+            example usage: https://github.com/andreigec/Meal-Chooser
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.BTree.SaveFileIntoTree``1(System.String,ANDREICSLIB.Helpers.Btree{``0},System.String)">
+            <summary>
+            Saves the file into tree.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="filename">The filename.</param>
+            <param name="root">The root.</param>
+            <param name="levelSeparator">The level separator.</param>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.BTree.SaveTree``1(ANDREICSLIB.Helpers.Btree{``0},System.String@,System.Int32,System.String)">
+            <summary>
+            Saves the tree.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="node">The node.</param>
+            <param name="ret">The ret.</param>
+            <param name="level">The level.</param>
+            <param name="levelSeparator">The level separator.</param>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.BTree.LoadFileIntoTree(System.String,ANDREICSLIB.Helpers.Btree{System.String},System.String,System.Boolean)">
+            <summary>
+                default for strings
+            </summary>
+            <param name="filename"></param>
+            <param name="root"></param>
+            <param name="levelSeparator"></param>
+            <param name="RecreateFileIfInvalid"></param>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.BTree.LoadFileIntoTree``1(System.String,ANDREICSLIB.Helpers.Btree{``0},System.Func{System.String,``0},System.String,System.Boolean)">
+            <summary>
+            Load a file into a tree structure based on levels. by default '1 \n \t 2' in a file will create a parent with a
+            child node
+            </summary>
+            <typeparam name="T">class type, usually string</typeparam>
+            <param name="filename">The filename.</param>
+            <param name="root">The root.</param>
+            <param name="addfunc">T must be able to be instantiated with a string. call with a=&gt;new T(a) where T is your class, or
+            the return string method</param>
+            <param name="levelSeparator">The level separator.</param>
+            <param name="RecreateFileIfInvalid">if set to <c>true</c> [recreate file if invalid].</param>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="T:ANDREICSLIB.Helpers.Btree`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="F:ANDREICSLIB.Helpers.Btree`1.Children">
+            <summary>
+            The children
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.Helpers.Btree`1.Name">
+            <summary>
+            The name
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.Helpers.Btree`1.Parent">
+            <summary>
+            The parent
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.Btree`1.ClearChildren">
+            <summary>
+            Clears the children.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.Btree`1.GetChildByName(`0)">
+            <summary>
+            Gets the name of the child by.
+            </summary>
+            <param name="nameC">The name c.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.Btree`1.AddChild(`0)">
+            <summary>
+            Adds the child.
+            </summary>
+            <param name="nameC">The name c.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.Btree`1.RemoveChild(`0)">
+            <summary>
+            Removes the child.
+            </summary>
+            <param name="nameC">The name c.</param>
+        </member>
+        <member name="T:ANDREICSLIB.Helpers.DeviceUpdates">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.DeviceUpdates.AutodetectCOMPort(System.String)">
+            <summary>
+            Autodetects the COM port.
+            </summary>
+            <param name="description">The description.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.Helpers.EmbeddedResources">
+            <summary>
+                example usage: https://github.com/andreigec/Crypto-Gram-Solve
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.EmbeddedResources.ReadEmbeddedImage(System.String)">
+            <summary>
+                get the contents of an embedded resource image
+            </summary>
+            <param name="filename">pass the file name</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.EmbeddedResources.ReadEmbeddedResource(System.String)">
+            <summary>
+                get the contents of an embedded resource
+            </summary>
+            <param name="filename">pass the file name</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.EmbeddedResources.GetResourceStream(System.String,System.Reflection.Assembly)">
+            <summary>
+                get the underlying streamreader for the resource
+            </summary>
+            <param name="filename"></param>
+            <param name="a">assembly.getexecutingassembly</param>
+            <returns>make sure to close the streamreader if not null</returns>
+        </member>
+        <member name="T:ANDREICSLIB.Helpers.FormConfigRestore">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.FormConfigRestore.SaveProperty(System.String@,System.Windows.Forms.Control)">
+            <summary>
+            Saves the property.
+            </summary>
+            <param name="output">The output.</param>
+            <param name="C">The c.</param>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.FormConfigRestore.SaveProperty(System.String@,System.Windows.Forms.ToolStripItem)">
+            <summary>
+            Saves the property.
+            </summary>
+            <param name="output">The output.</param>
+            <param name="tsi">The tsi.</param>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.FormConfigRestore.LoadProperty(System.Object,System.String,System.Object)">
+            <summary>
+            set the value of the control object
+            </summary>
+            <param name="c">The c.</param>
+            <param name="propertyName">Name of the property.</param>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.FormConfigRestore.LoadPropertyManual(System.Object,System.String,System.Object)">
+            <summary>
+            Loads the property manual.
+            </summary>
+            <param name="c">The c.</param>
+            <param name="propertyName">Name of the property.</param>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.FormConfigRestore.LoadProperty(System.Windows.Forms.Form,System.String,System.String,System.Object)">
+            <summary>
+            find the matching control for the name given
+            </summary>
+            <param name="baseform">The baseform.</param>
+            <param name="name">The name.</param>
+            <param name="propertyName">Name of the property.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.FormConfigRestore.LoadProperty(System.String,System.String,System.Windows.Forms.Control,System.Object)">
+            <summary>
+            Loads the property.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="propertyName">Name of the property.</param>
+            <param name="checkthis">The checkthis.</param>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.FormConfigRestore.LoadProperty(System.String,System.String,System.Windows.Forms.ToolStripItem,System.Object)">
+            <summary>
+            Loads the property.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="propertyName">Name of the property.</param>
+            <param name="checkthis">The checkthis.</param>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.FormConfigRestore.LoadConfig(System.Windows.Forms.Form,System.String)">
+            <summary>
+            load the saved config file. will automatically load all the control values, and return the manual strings
+            </summary>
+            <param name="baseform">pass the base form</param>
+            <param name="filename">the saved config flename</param>
+            <returns>
+            returns null on error, and a list of tuples of saved literal strings otherwise
+            </returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.FormConfigRestore.SaveConfig(System.Windows.Forms.Form,System.String,System.Collections.Generic.IEnumerable{System.Windows.Forms.Control},System.Collections.Generic.IEnumerable{System.Windows.Forms.ToolStripItem},System.Collections.Generic.IEnumerable{System.Tuple{System.String,System.String}})">
+            <summary>
+            save controls, tool strips, and manually saved strings
+            call this on form load
+            </summary>
+            <param name="baseform">The baseform.</param>
+            <param name="filename">The filename.</param>
+            <param name="saveControls">a list of form controlls to save, except tool strip items</param>
+            <param name="saveToolStripItems">list of tool strip menu items which the checked value should be saved for</param>
+            <param name="literalStrings">a list of tuple string/strings to manually save</param>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.Helpers.MatrixOps">
+            <summary>
+                example usage: https://github.com/andreigec/Sudoku-Solver
+            </summary>
+        </member>
+        <member name="T:ANDREICSLIB.Helpers.MatrixOps.CompareDel`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="o1">The o1.</param>
+            <param name="o2">The o2.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.MatrixOps.StartRight``1(ANDREICSLIB.Helpers.MatrixOps.MatrixO{``0}@,System.Int32,System.Int32,``0,``0,System.Boolean)">
+            <summary>
+            Starts the right.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="grid">The grid.</param>
+            <param name="startx">The startx.</param>
+            <param name="starty">The starty.</param>
+            <param name="test">The test.</param>
+            <param name="set">The set.</param>
+            <param name="testup">if set to <c>true</c> [testup].</param>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.MatrixOps.FloodFill``1(``0[][]@,System.Int32,System.Int32,``0,``0,ANDREICSLIB.Helpers.MatrixOps.CompareDel{``0})">
+            <summary>
+            Floods the fill.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="grid">The grid.</param>
+            <param name="startX">The start x.</param>
+            <param name="startY">The start y.</param>
+            <param name="test">The test.</param>
+            <param name="set">The set.</param>
+            <param name="compareF">The compare f.</param>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.MatrixOps.CloneMatrix``1(``0[][],System.Int32,System.Int32)">
+            <summary>
+            Clones the matrix.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="gridIN">The grid in.</param>
+            <param name="widthI">The width i.</param>
+            <param name="heightI">The height i.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.MatrixOps.CreateMatrix``1(System.Int32,System.Int32)">
+            <summary>
+            Creates the matrix.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="widthI">The width i.</param>
+            <param name="heightI">The height i.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.MatrixOps.SerialiseMatrix``1(``0[][],System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            Serialises the matrix.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="matrix">The matrix.</param>
+            <param name="width">The width.</param>
+            <param name="height">The height.</param>
+            <param name="rowsep">The rowsep.</param>
+            <param name="linesep">The linesep.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.MatrixOps.SetAll``1(``0[][],``0)">
+            <summary>
+            Sets all.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="matrix">The matrix.</param>
+            <param name="val">The value.</param>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.MatrixOps.Replace``1(``0[][]@,``0,``0,ANDREICSLIB.Helpers.MatrixOps.CompareDel{``0})">
+            <summary>
+            Replaces the specified matrix.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="matrix">The matrix.</param>
+            <param name="test">The test.</param>
+            <param name="set">The set.</param>
+            <param name="compare">The compare.</param>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.MatrixOps.Count``1(``0[][],``0)">
+            <summary>
+            Counts the specified matrix.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="matrix">The matrix.</param>
+            <param name="val">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.Helpers.MatrixOps.MatrixO`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="F:ANDREICSLIB.Helpers.MatrixOps.MatrixO`1.CompareF">
+            <summary>
+            The compare f
+            </summary>
+        </member>
+        <member name="T:ANDREICSLIB.Helpers.LocalJSONCache">
+            <summary>
+            example usage: https://github.com/andreigec/GithubSensitiveSearch
+            </summary>
+            <seealso cref="T:ANDREICSLIB.Helpers.ICache" />
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.LocalJSONCache.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ANDREICSLIB.Helpers.LocalJSONCache"/> class.
+            </summary>
+            <param name="filename">The filename.</param>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.LocalJSONCache.Set``1(System.String,``0)">
+            <summary>
+            set a value using a key and a value
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.LocalJSONCache.Get``1(System.String)">
+            <summary>
+            return a value using a key
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="cacheKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.LocalJSONCache.Cache``1(System.Linq.Expressions.Expression{System.Func{``0}},System.String)">
+            <summary>
+            pass in a sync action
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="action"></param>
+            <param name="memberName"></param>
+            <returns></returns>
+            <exception cref="T:System.Exception">Error on cache read:
+            or
+            Error on cache write:</exception>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.LocalJSONCache.Cache(System.Linq.Expressions.Expression{System.Func{System.Threading.Tasks.Task{System.String}}},System.Boolean,System.String)">
+            <summary>
+            pass in an async function that returns a string - can compress if type is known
+            </summary>
+            <param name="action"></param>
+            <param name="compress"></param>
+            <param name="memberName"></param>
+            <returns></returns>
+            <exception cref="T:System.Exception">
+            Error on cache read:
+            or
+            Error on cache write:
+            </exception>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.LocalJSONCache.Cache``1(System.Linq.Expressions.Expression{System.Func{System.Threading.Tasks.Task{``0}}},System.String)">
+            <summary>
+            pass in an async action
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="action"></param>
+            <param name="memberName"></param>
+            <returns></returns>
+            <exception cref="T:System.Exception">
+            Error on cache read:
+            or
+            Error on cache write:
+            </exception>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.LocalJSONCache.ReturnType``1(System.Object)">
+            <summary>
+            Returns the type.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="o">The o.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.LocalJSONCache.GetKey``1(System.String,System.Linq.Expressions.MethodCallExpression)">
+            <summary>
+            Gets the key.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="memberName">Name of the member.</param>
+            <param name="action">((MethodCallExpression)action.Body)</param>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.Helpers.CustomTimeZones">
+            <summary>
+            example usage: https://github.com/andreigec/Timezone-Sleep-Converter
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.Helpers.CustomTimeZones.Zones">
+            <summary>
+            The zones
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.Helpers.CustomTimeZones.Id">
+            <summary>
+            The identifier
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.Helpers.CustomTimeZones.name">
+            <summary>
+            The name
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.Helpers.CustomTimeZones.UTCoffset">
+            <summary>
+            The ut coffset
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.CustomTimeZones.#ctor(System.TimeZoneInfo,System.String,System.TimeSpan)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ANDREICSLIB.Helpers.CustomTimeZones"/> class.
+            </summary>
+            <param name="idIN">The identifier in.</param>
+            <param name="nameIN">The name in.</param>
+            <param name="UTCIN">The utcin.</param>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.CustomTimeZones.GetMyTimeZone">
+            <summary>
+            Gets my time zone.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.CustomTimeZones.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.CustomTimeZones.FromString(System.String)">
+            <summary>
+            Froms the string.
+            </summary>
+            <param name="s">The s.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.CustomTimeZones.ComparisonTime(ANDREICSLIB.Helpers.CustomTimeZones,ANDREICSLIB.Helpers.CustomTimeZones)">
+            <summary>
+            Comparisons the time.
+            </summary>
+            <param name="t1">The t1.</param>
+            <param name="t2">The t2.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.CustomTimeZones.Sort(System.Boolean)">
+            <summary>
+            Sorts the specified by name.
+            </summary>
+            <param name="byName">if set to <c>true</c> [by name].</param>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.CustomTimeZones.Create">
+            <summary>
+            Create the list of timezones before using
+            </summary>
+        </member>
+        <member name="T:ANDREICSLIB.Helpers.Reflection">
+            <summary>
+                example usage: https://github.com/andreigec/Backgrounder
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.Reflection.GetFieldName(System.Linq.Expressions.Expression{System.Func{System.Object}})">
+            <summary>
+            get the name of a passed parameter
+            </summary>
+            <param name="memberExpression">() =&gt; variable</param>
+            <returns>
+            variable name
+            </returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.Reflection.GetFieldValue(System.Object,System.String)">
+            <summary>
+            get a field or property of a class instance
+            </summary>
+            <param name="classInstance">The class instance.</param>
+            <param name="fieldname">The fieldname.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.Reflection.GetFieldNamesAndValues(System.Object)">
+            <summary>
+            get a tuple list of the type name and type values of an object
+            </summary>
+            <param name="classInstance">the class you want the values for</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.Reflection.GetFieldNames(System.Type)">
+            <summary>
+            Gets the field names.
+            </summary>
+            <param name="ty">The ty.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.Reflection.SerialiseObject(System.Object,System.String)">
+            <summary>
+            serialise an object to a file
+            </summary>
+            <param name="classInstance">The class instance.</param>
+            <param name="filename">The filename.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.Reflection.SerialiseObject(System.Object)">
+            <summary>
+            serialise an object to a return string
+            </summary>
+            <param name="classInstance">The class instance.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.Reflection.DeserialiseObject(System.String,System.Type,System.Boolean)">
+            <summary>
+            deserialise a file to an object from a file
+            </summary>
+            <param name="filename">The filename.</param>
+            <param name="objectType">Type of the object.</param>
+            <param name="ignoreErrors">if set to <c>true</c> [ignore errors].</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.Reflection.DeserialiseObject(System.Type,System.String,System.Boolean)">
+            <summary>
+            deserialise an object from a serialised string
+            </summary>
+            <param name="objectType">Type of the object.</param>
+            <param name="serialisedObjectString">The serialised object string.</param>
+            <param name="ignoreErrors">if set to <c>true</c> [ignore errors].</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Helpers.Reflection.DeserialiseObject(System.Type,System.Collections.Generic.List{System.Tuple{System.String,System.String}},System.Boolean)">
+            <summary>
+            deserialise an object from a list of tuple string,string s
+            </summary>
+            <param name="objectType">Type of the object.</param>
+            <param name="objectFieldNameAndValues">field name,field val</param>
+            <param name="ignoreErrors">if set to <c>true</c> [ignore errors].</param>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.Helpers.TimeUpdates">
+            <summary>
+            example usage: https://github.com/andreigec/Consultant-Plus
+            </summary>
+        </member>
+        <member name="T:ANDREICSLIB.Licensing.GitHubLicensing">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.Licensing.GitHubLicensing.GetVersion(System.String)">
+            <summary>
+            Gets the version.
+            </summary>
+            <param name="html">The HTML.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Licensing.GitHubLicensing.GetDownloadPath(System.String)">
+            <summary>
+            Gets the download path.
+            </summary>
+            <param name="html">The HTML.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Licensing.GitHubLicensing.GetChangeLog(System.String)">
+            <summary>
+            Gets the change log.
+            </summary>
+            <param name="html">The HTML.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Licensing.GitHubLicensing.GetGitHubReleaseDetails(ANDREICSLIB.Licensing.LicensingDetails,System.String)">
+            <summary>
+            Gets the git hub release details.
+            </summary>
+            <param name="appRepo">The application repo.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.Licensing.LicensingDetails">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:ANDREICSLIB.Licensing.LicensingDetails.LicenseResponse">
+            <summary>
+            Gets or sets the response.
+            </summary>
+            <value>
+            The response.
+            </value>
+        </member>
+        <member name="F:ANDREICSLIB.Licensing.LicensingDetails.LicenseResponse.Error">
+            <summary>
+            error
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.Licensing.LicensingDetails.LicenseResponse.UpToDate">
+            <summary>
+            Up to date
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.Licensing.LicensingDetails.LicenseResponse.NewVersion">
+            <summary>
+            The new version
+            </summary>
+        </member>
+        <member name="P:ANDREICSLIB.Licensing.LicensingDetails.Response">
+            <summary>
+            Gets or sets the response.
+            </summary>
+            <value>
+            The response.
+            </value>
+        </member>
+        <member name="P:ANDREICSLIB.Licensing.LicensingDetails.ResponseMessage">
+            <summary>
+            Gets or sets the response message.
+            </summary>
+            <value>
+            The response message.
+            </value>
+        </member>
+        <member name="P:ANDREICSLIB.Licensing.LicensingDetails.CurrentVersion">
+            <summary>
+            Gets or sets the current version.
+            </summary>
+            <value>
+            The current version.
+            </value>
+        </member>
+        <member name="P:ANDREICSLIB.Licensing.LicensingDetails.OnlineVersion">
+            <summary>
+            Gets or sets the online version.
+            </summary>
+            <value>
+            The online version.
+            </value>
+        </member>
+        <member name="P:ANDREICSLIB.Licensing.LicensingDetails.ChangeLog">
+            <summary>
+            Gets or sets the change log.
+            </summary>
+            <value>
+            The change log.
+            </value>
+        </member>
+        <member name="P:ANDREICSLIB.Licensing.LicensingDetails.FileLocation">
+            <summary>
+            Gets or sets the file location.
+            </summary>
+            <value>
+            The file location.
+            </value>
+        </member>
+        <member name="M:ANDREICSLIB.Licensing.LicensingDetails.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ANDREICSLIB.Licensing.LicensingDetails"/> class.
+            </summary>
+        </member>
+        <member name="P:ANDREICSLIB.Licensing.LicensingDetails.Callback">
+            <summary>
+            Gets or sets the callback.
+            </summary>
+            <value>
+            The callback.
+            </value>
+        </member>
+        <member name="T:ANDREICSLIB.Licensing.LicenseCallback">
+            <summary>
+            
+            </summary>
+            <param name="appRepo">The application repo.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.Licensing.SolutionDetails">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.Licensing.SolutionDetails.#ctor(ANDREICSLIB.Licensing.LicenseCallback,System.String,System.String,System.String,System.Version,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ANDREICSLIB.Licensing.SolutionDetails"/> class.
+            </summary>
+            <param name="dsd">The DSD.</param>
+            <param name="helpText">The help text.</param>
+            <param name="appName">Name of the application.</param>
+            <param name="appRepoName">Name of the application repo.</param>
+            <param name="version">The version.</param>
+            <param name="aboutScreenOtherText">The about screen other text.</param>
+        </member>
+        <member name="M:ANDREICSLIB.Licensing.SolutionDetails.Callback">
+            <summary>
+            Callbacks this instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.Licensing.AboutScreen">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:System.Windows.Forms.Form" />
+        </member>
+        <member name="M:ANDREICSLIB.Licensing.AboutScreen.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ANDREICSLIB.Licensing.AboutScreen"/> class.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.Licensing.AboutScreen.aboutScreen_Load(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Load event of the aboutScreen control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ANDREICSLIB.Licensing.AboutScreen.closebutton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Click event of the closebutton control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ANDREICSLIB.Licensing.AboutScreen.otherapptext_LinkClicked(System.Object,System.Windows.Forms.LinkClickedEventArgs)">
+            <summary>
+            Handles the LinkClicked event of the otherapptext control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.LinkClickedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ANDREICSLIB.Licensing.AboutScreen.aboutScreen_FormClosing(System.Object,System.Windows.Forms.FormClosingEventArgs)">
+            <summary>
+            Handles the FormClosing event of the aboutScreen control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.FormClosingEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="F:ANDREICSLIB.Licensing.AboutScreen.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.Licensing.AboutScreen.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ANDREICSLIB.Licensing.AboutScreen.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.Licensing.AboutScreen.otherapptext">
+            <summary>
+            The otherapptext
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.Licensing.AboutScreen.apptitlelabel">
+            <summary>
+            The apptitlelabel
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.Licensing.AboutScreen.appversionlabel">
+            <summary>
+            The appversionlabel
+            </summary>
+        </member>
+        <member name="T:ANDREICSLIB.Licensing.HelpScreen">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:System.Windows.Forms.Form" />
+        </member>
+        <member name="M:ANDREICSLIB.Licensing.HelpScreen.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ANDREICSLIB.Licensing.HelpScreen"/> class.
+            </summary>
+        </member>
+        <member name="P:ANDREICSLIB.Licensing.HelpScreen.AutoSize">
+            <summary>
+            Resize the form according to the setting of <see cref="P:System.Windows.Forms.Form.AutoSizeMode" />.
+            </summary>
+            <PermissionSet>
+              <IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+              <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+              <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode, ControlEvidence" />
+              <IPermission class="System.Diagnostics.PerformanceCounterPermission, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+            </PermissionSet>
+        </member>
+        <member name="M:ANDREICSLIB.Licensing.HelpScreen.closebutton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Click event of the closebutton control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ANDREICSLIB.Licensing.HelpScreen.helpScreen_FormClosing(System.Object,System.Windows.Forms.FormClosingEventArgs)">
+            <summary>
+            Handles the FormClosing event of the helpScreen control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.FormClosingEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="F:ANDREICSLIB.Licensing.HelpScreen.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.Licensing.HelpScreen.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ANDREICSLIB.Licensing.HelpScreen.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.Licensing.HelpScreen.helpbox">
+            <summary>
+            The helpbox
+            </summary>
+        </member>
+        <member name="T:ANDREICSLIB.Licensing.Licensing">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.Licensing.Licensing.ShowingAbout">
+            <summary>
+                so we dont allow 2 instances of the about dialog
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.Licensing.Licensing.ShowingHelp">
+            <summary>
+                so we dont allow 2 instances of the help dialog
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.Licensing.Licensing.IsUpdateConsoleRequired(System.String,System.String)">
+            <summary>
+            update process via console. if true, terminate console app in 1 second so update process can overwrite exe
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Licensing.Licensing.LicensingForm(System.Windows.Forms.Form,System.Windows.Forms.MenuStrip,System.String,System.String)">
+            <summary>
+            INIT LICENSING FOR FORM - CALL THIS
+            Inserts about tab on menu strip
+            </summary>
+            <param name="baseform">The baseform.</param>
+            <param name="existingMenuStrip">The existing menu strip.</param>
+            <param name="newsd">The newsd.</param>
+        </member>
+        <member name="M:ANDREICSLIB.Licensing.Licensing.GetItem(System.Windows.Forms.MenuStrip)">
+            <summary>
+            Gets the item.
+            </summary>
+            <param name="ms">The ms.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Licensing.Licensing.Aboutbox(System.Object,System.EventArgs)">
+            <summary>
+            Aboutboxes the specified sender.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ANDREICSLIB.Licensing.Licensing.Helpbox(System.Object,System.EventArgs)">
+            <summary>
+            Helpboxes the specified sender.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ANDREICSLIB.Licensing.Licensing.UpdateApplicationForm">
+            <summary>
+            update process via winform
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Licensing.Licensing.UpdateApplication(ANDREICSLIB.Licensing.LicensingDetails)">
+            <summary>
+            Updates the application.
+            </summary>
+            <param name="dsd">The DSD.</param>
+        </member>
+        <member name="T:ANDREICSLIB.Models.FileSizes">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.Models.FileSizes.#ctor(System.Int64)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ANDREICSLIB.Models.FileSizes"/> class.
+            </summary>
+            <param name="bytes">The bytes.</param>
+        </member>
+        <member name="M:ANDREICSLIB.Models.FileSizes.ToStringBytes">
+            <summary>
+            To the string bytes.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Models.FileSizes.ToStringKB">
+            <summary>
+            To the string kb.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Models.FileSizes.ToStringMB">
+            <summary>
+            To the string mb.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.NewControls.ColorListBox">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:System.Windows.Forms.ListBox" />
+        </member>
+        <member name="F:ANDREICSLIB.NewControls.ColorListBox.colours">
+            <summary>
+            The colours
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.ColorListBox.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ANDREICSLIB.NewControls.ColorListBox"/> class.
+            </summary>
+        </member>
+        <member name="P:ANDREICSLIB.NewControls.ColorListBox.Colours">
+            <summary>
+            Gets or sets the colours.
+            </summary>
+            <value>
+            The colours.
+            </value>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.ColorListBox.DrawItemHandler(System.Object,System.Windows.Forms.DrawItemEventArgs)">
+            <summary>
+            Draws the item handler.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.DrawItemEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="T:ANDREICSLIB.NewControls.SelectItemFromListView">
+            <summary>
+                example usage: https://github.com/andreigec/MTG-Proxy-Maker
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.SelectItemFromListView.#ctor">
+            <summary>
+            call from static showdialog
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.SelectItemFromListView.ShowDialog(System.String,System.String,System.Collections.Generic.List{System.Windows.Forms.ListViewItem},System.Boolean,System.Int32)">
+            <summary>
+            return selected values after dialog closes. if canceled, will return null
+            </summary>
+            <param name="labelText">The label text.</param>
+            <param name="title">The title.</param>
+            <param name="listBoxItems">The list box items.</param>
+            <param name="multiselect">if set to <c>true</c> [multiselect].</param>
+            <param name="mustSelectCountIN">The must select count in.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.SelectItemFromListView.okbutton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Click event of the okbutton control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.SelectItemFromListView.cancelbutton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Click event of the cancelbutton control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.SelectItemFromListView.selectItemFromListBox_Load(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Load event of the selectItemFromListBox control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.SelectItemFromListView.selectItemFromListBox_SizeChanged(System.Object,System.EventArgs)">
+            <summary>
+            Handles the SizeChanged event of the selectItemFromListBox control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="F:ANDREICSLIB.NewControls.SelectItemFromListView.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.SelectItemFromListView.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.SelectItemFromListView.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:ANDREICSLIB.NewControls.GetStringImageCompare">
+            <summary>
+            example usage: https://github.com/andreigec/Histogram-OCR-Trainer
+            </summary>
+            <seealso cref="T:System.Windows.Forms.Form" />
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.GetStringImageCompare.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ANDREICSLIB.NewControls.GetStringImageCompare"/> class.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.GetStringImageCompare.ShowDialog(System.String,System.String,System.Drawing.Image,System.Int32,System.Windows.Forms.ImageLayout)">
+            <summary>
+            Shows the dialog.
+            </summary>
+            <param name="labelText">The label text.</param>
+            <param name="title">The title.</param>
+            <param name="i">The i.</param>
+            <param name="maxlen">The maxlen.</param>
+            <param name="il">The il.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.GetStringImageCompare.GetStringImageCompare_Load(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Load event of the GetStringImageCompare control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.GetStringImageCompare.okbutton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Click event of the okbutton control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.GetStringImageCompare.cancelbutton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Click event of the cancelbutton control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="F:ANDREICSLIB.NewControls.GetStringImageCompare.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.GetStringImageCompare.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.GetStringImageCompare.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:ANDREICSLIB.NewControls.GrowingLabel">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:System.Windows.Forms.Label" />
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.GrowingLabel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ANDREICSLIB.NewControls.GrowingLabel"/> class.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.GrowingLabel.resizeLabel">
+            <summary>
+            Resizes the label.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.GrowingLabel.OnTextChanged(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:TextChanged" /> event.
+            </summary>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.GrowingLabel.OnFontChanged(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:FontChanged" /> event.
+            </summary>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.GrowingLabel.OnSizeChanged(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:SizeChanged" /> event.
+            </summary>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="F:ANDREICSLIB.NewControls.GrowingLabel.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.GrowingLabel.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.GrowingLabel.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:ANDREICSLIB.NewControls.DragBar">
+            <summary>
+            example usage: https://github.com/andreigec/Timezone-Sleep-Converter
+            </summary>
+            <seealso cref="T:System.Windows.Forms.UserControl" />
+        </member>
+        <member name="T:ANDREICSLIB.NewControls.DragBar.BarEvent">
+            <summary>
+            
+            </summary>
+            <param name="entry">The entry.</param>
+        </member>
+        <member name="F:ANDREICSLIB.NewControls.DragBar.barEndX">
+            <summary>
+                x value for the end of the bar (set on paint)
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.NewControls.DragBar.barX">
+            <summary>
+                x value for the start of the bar (set on paint)
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.NewControls.DragBar.mouseDownButton">
+            <summary>
+            The mouse down button
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.NewControls.DragBar.mouseDownX">
+            <summary>
+            The mouse down x
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.NewControls.DragBar.mouseMoveBar">
+            <summary>
+            The mouse move bar
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.NewControls.DragBar.mouseResizeBar">
+            <summary>
+            The mouse resize bar
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.NewControls.DragBar.resizeleft">
+            <summary>
+            The resizeleft
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.NewControls.DragBar.scales">
+            <summary>
+            The scales
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.NewControls.DragBar.scaleWidth">
+            <summary>
+            The scale width
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.DragBar.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ANDREICSLIB.NewControls.DragBar" /> class.
+            </summary>
+        </member>
+        <member name="P:ANDREICSLIB.NewControls.DragBar.MinimumValue">
+            <summary>
+            Gets or sets the minimum value.
+            </summary>
+            <value>
+            The minimum value.
+            </value>
+        </member>
+        <member name="P:ANDREICSLIB.NewControls.DragBar.MaximumValue">
+            <summary>
+            Gets or sets the maximum value.
+            </summary>
+            <value>
+            The maximum value.
+            </value>
+        </member>
+        <member name="P:ANDREICSLIB.NewControls.DragBar.BarMinimumValue">
+            <summary>
+            Gets or sets the bar minimum value.
+            </summary>
+            <value>
+            The bar minimum value.
+            </value>
+        </member>
+        <member name="P:ANDREICSLIB.NewControls.DragBar.BarMaximumValue">
+            <summary>
+            Gets or sets the bar maximum value.
+            </summary>
+            <value>
+            The bar maximum value.
+            </value>
+        </member>
+        <member name="P:ANDREICSLIB.NewControls.DragBar.DrawScale">
+            <summary>
+            Gets or sets a value indicating whether [draw scale].
+            </summary>
+            <value>
+              <c>true</c> if [draw scale]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:ANDREICSLIB.NewControls.DragBar.BackColour">
+            <summary>
+            Gets or sets the back colour.
+            </summary>
+            <value>
+            The back colour.
+            </value>
+        </member>
+        <member name="P:ANDREICSLIB.NewControls.DragBar.ScaleColour">
+            <summary>
+            Gets or sets the scale colour.
+            </summary>
+            <value>
+            The scale colour.
+            </value>
+        </member>
+        <member name="P:ANDREICSLIB.NewControls.DragBar.BarColour">
+            <summary>
+            Gets or sets the bar colour.
+            </summary>
+            <value>
+            The bar colour.
+            </value>
+        </member>
+        <member name="E:ANDREICSLIB.NewControls.DragBar.BarValueChange">
+            <summary>
+            Occurs when [bar value change].
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.DragBar.OnBarValueChange">
+            <summary>
+            Called when [bar value change].
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.DragBar.getFontSize">
+            <summary>
+            Gets the size of the font.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.DragBar.drawpanel_Paint(System.Object,System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Handles the Paint event of the drawpanel control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.PaintEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.DragBar.DragBar_Resize(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Resize event of the DragBar control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.DragBar.InitScale">
+            <summary>
+            Initializes the scale.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.DragBar.listpanel_Paint(System.Object,System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Handles the Paint event of the listpanel control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.PaintEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.DragBar.DragBar_Load(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Load event of the DragBar control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.DragBar.WrapBar">
+            <summary>
+            Wraps the bar.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.DragBar.drawpanel_MouseDown(System.Object,System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Handles the MouseDown event of the drawpanel control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.MouseEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.DragBar.drawpanel_MouseUp(System.Object,System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Handles the MouseUp event of the drawpanel control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.MouseEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.DragBar.overLeftResize(System.Int32)">
+            <summary>
+            Overs the left resize.
+            </summary>
+            <param name="x">The x.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.DragBar.overRightResize(System.Int32)">
+            <summary>
+            Overs the right resize.
+            </summary>
+            <param name="x">The x.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.DragBar.overCenter(System.Int32)">
+            <summary>
+            Overs the center.
+            </summary>
+            <param name="x">The x.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.DragBar.drawpanel_MouseMove(System.Object,System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Handles the MouseMove event of the drawpanel control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.MouseEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="F:ANDREICSLIB.NewControls.DragBar.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.DragBar.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.DragBar.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:ANDREICSLIB.NewControls.GetStringBox">
+            <summary>
+            example usage: https://github.com/andreigec/COD4-Server-Tool
+            </summary>
+            <seealso cref="T:System.Windows.Forms.Form" />
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.GetStringBox.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ANDREICSLIB.NewControls.GetStringBox"/> class.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.GetStringBox.ShowDialog(System.String,System.String,System.Boolean)">
+            <summary>
+            Shows the dialog.
+            </summary>
+            <param name="labelText">The label text.</param>
+            <param name="title">The title.</param>
+            <param name="multiline">if set to <c>true</c> [multiline].</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.GetStringBox.okbutton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Click event of the okbutton control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.GetStringBox.cancelbutton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Click event of the cancelbutton control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.GetStringBox.textBox1_KeyPress(System.Object,System.Windows.Forms.KeyPressEventArgs)">
+            <summary>
+            Handles the KeyPress event of the textBox1 control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.KeyPressEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="F:ANDREICSLIB.NewControls.GetStringBox.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.GetStringBox.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.GetStringBox.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.NewControls.GetStringBox.label1">
+            <summary>
+            The label1
+            </summary>
+        </member>
+        <member name="T:ANDREICSLIB.NewControls.ImageDraw">
+            <summary>
+                example usage: https://github.com/andreigec/BeadSprite-Pro
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.ImageDraw.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ANDREICSLIB.NewControls.ImageDraw"/> class.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.ImageDraw.GetRealPos(System.Windows.Forms.Control,System.Int32,System.Int32)">
+            <summary>
+            translate a position over the image to the location on the original image
+            </summary>
+            <param name="c">The c.</param>
+            <param name="x">The x.</param>
+            <param name="y">The y.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.ImageDraw.GetMatrix(System.Windows.Forms.Control)">
+            <summary>
+            Gets the matrix.
+            </summary>
+            <param name="c">The c.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.ImageDraw.PaintF(System.Drawing.Graphics,System.Windows.Forms.Control)">
+            <summary>
+            Paints the f.
+            </summary>
+            <param name="g">The g.</param>
+            <param name="c">The c.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.ImageDraw.PaintEvent(System.Object,System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Paints the event.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.PaintEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="F:ANDREICSLIB.NewControls.ImageDraw.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.ImageDraw.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.ImageDraw.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:ANDREICSLIB.NewControls.MassVariableEdit">
+            <summary>
+                example usage: https://github.com/andreigec/Word-Find-Solver
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.NewControls.MassVariableEdit.ReturnValues">
+            <summary>
+            The return values
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.NewControls.MassVariableEdit.Textboxes">
+            <summary>
+            The textboxes
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.MassVariableEdit.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ANDREICSLIB.NewControls.MassVariableEdit"/> class.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.MassVariableEdit.ShowDialogStatic``1(System.String,``0,System.Collections.Generic.List{ANDREICSLIB.NewControls.MassVariableEdit.TextBoxItems})">
+            <summary>
+            Shows the dialog static.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="formText">The form text.</param>
+            <param name="classInstance">The class instance.</param>
+            <param name="overload">The overload.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.MassVariableEdit.ShowDialog``1(System.String,``0,System.Collections.Generic.List{ANDREICSLIB.NewControls.MassVariableEdit.TextBoxItems})">
+            <summary>
+            populate with the variable names from a class. will also copy the instances values as preset text by default
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="formText">The form text.</param>
+            <param name="classInstance">The class instance.</param>
+            <param name="overload">The overload.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.MassVariableEdit.ShowDialog(System.String,System.Collections.Generic.List{ANDREICSLIB.NewControls.MassVariableEdit.TextBoxItems})">
+            <summary>
+            show a dialog from a list of variable names,variable values,and validation/handlers
+            </summary>
+            <param name="formText">The form text.</param>
+            <param name="items">list of items to add. param name,preset value,keypress validation</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.MassVariableEdit.tb_KeyPress(System.Object,System.Windows.Forms.KeyPressEventArgs)">
+            <summary>
+            Handles the KeyPress event of the tb control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.KeyPressEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.MassVariableEdit.okbutton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Click event of the okbutton control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.MassVariableEdit.cancelbutton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Click event of the cancelbutton control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="T:ANDREICSLIB.NewControls.MassVariableEdit.TextBoxItems">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.MassVariableEdit.TextBoxItems.#ctor(System.String,System.String,ANDREICSLIB.NewControls.MassVariableEdit.HandleKeyPress,ANDREICSLIB.NewControls.MassVariableEdit.AcceptFinalTextBoxText,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ANDREICSLIB.NewControls.MassVariableEdit.TextBoxItems"/> class.
+            </summary>
+            <param name="fieldname">The fieldname.</param>
+            <param name="presetvalue">The presetvalue.</param>
+            <param name="handleKeyPressH">The handle key press h.</param>
+            <param name="acceptFinalTextBoxTextH">The accept final text box text h.</param>
+            <param name="errortext">The errortext.</param>
+        </member>
+        <member name="T:ANDREICSLIB.NewControls.MassVariableEdit.AcceptFinalTextBoxText">
+            <summary>
+                will get called to do final validations on textbox text before accepting
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.NewControls.MassVariableEdit.HandleKeyPress">
+            <summary>
+                will get called on textbox.keypress if set
+            </summary>
+            <param name="keyChar"></param>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="F:ANDREICSLIB.NewControls.MassVariableEdit.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.MassVariableEdit.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.MassVariableEdit.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:ANDREICSLIB.NewControls.MultipleMessageBox">
+            <summary>
+                example usage: https://github.com/andreigec/Music-File-Info-Editor
+            </summary>
+        </member>
+        <member name="P:ANDREICSLIB.NewControls.MultipleMessageBox.Result">
+            <summary>
+            Gets the result.
+            </summary>
+            <value>
+            The result.
+            </value>
+        </member>
+        <member name="P:ANDREICSLIB.NewControls.MultipleMessageBox.IsSet">
+            <summary>
+            Gets a value indicating whether this instance is set.
+            </summary>
+            <value>
+              <c>true</c> if this instance is set; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.MultipleMessageBox.#ctor(System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:ANDREICSLIB.NewControls.MultipleMessageBox"/> class.
+            </summary>
+            <param name="windowText">The window text.</param>
+            <param name="labelText">The label text.</param>
+            <param name="Buttons">The buttons.</param>
+        </member>
+        <member name="P:ANDREICSLIB.NewControls.MultipleMessageBox.Text">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.MultipleMessageBox.buttonpress(System.Object,System.EventArgs)">
+            <summary>
+            Buttonpresses the specified sender.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="F:ANDREICSLIB.NewControls.MultipleMessageBox.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.MultipleMessageBox.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.MultipleMessageBox.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:ANDREICSLIB.NewControls.SelectItemsFromCheckBox">
+            <summary>
+                example usage: https://github.com/andreigec/BeadSprite-Pro
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.SelectItemsFromCheckBox.#ctor">
+            <summary>
+            Prevents a default instance of the <see cref="T:ANDREICSLIB.NewControls.SelectItemsFromCheckBox"/> class from being created.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.SelectItemsFromCheckBox.SelectItemsFromCheckBox_Load(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Load event of the SelectItemsFromCheckBox control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.SelectItemsFromCheckBox.ShowDialog(System.String,System.String,System.Collections.Generic.List{ANDREICSLIB.NewControls.SelectItemFromListBox.SelectItem},System.Int32)">
+            <summary>
+            Shows the dialog.
+            </summary>
+            <param name="labelText">The label text.</param>
+            <param name="title">The title.</param>
+            <param name="listBoxItems">The list box items.</param>
+            <param name="mustSelectCountIN">The must select count in.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.SelectItemsFromCheckBox.okbutton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Click event of the okbutton control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.SelectItemsFromCheckBox.cancelbutton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Click event of the cancelbutton control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="F:ANDREICSLIB.NewControls.SelectItemsFromCheckBox.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.SelectItemsFromCheckBox.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.SelectItemsFromCheckBox.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:ANDREICSLIB.NewControls.SerializableDictionary`2">
+            <summary>
+                example usage: https://github.com/andreigec/FireWind
+            </summary>
+            <typeparam name="TKey"></typeparam>
+            <typeparam name="TValue"></typeparam>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.SerializableDictionary`2.GetSchema">
+            <summary>
+            This method is reserved and should not be used. When implementing the IXmlSerializable interface, you should return null (Nothing in Visual Basic) from this method, and instead, if specifying a custom schema is required, apply the <see cref="T:System.Xml.Serialization.XmlSchemaProviderAttribute" /> to the class.
+            </summary>
+            <returns>
+            An <see cref="T:System.Xml.Schema.XmlSchema" /> that describes the XML representation of the object that is produced by the <see cref="M:System.Xml.Serialization.IXmlSerializable.WriteXml(System.Xml.XmlWriter)" /> method and consumed by the <see cref="M:System.Xml.Serialization.IXmlSerializable.ReadXml(System.Xml.XmlReader)" /> method.
+            </returns>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.SerializableDictionary`2.ReadXml(System.Xml.XmlReader)">
+            <summary>
+            Reads the XML.
+            </summary>
+            <param name="reader">The reader.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.SerializableDictionary`2.WriteXml(System.Xml.XmlWriter)">
+            <summary>
+            Writes the XML.
+            </summary>
+            <param name="writer">The writer.</param>
+        </member>
+        <member name="T:ANDREICSLIB.NewControls.SelectItemFromListBox">
+            <summary>
+            example usage: https://github.com/andreigec/Meal-Chooser
+            </summary>
+            <seealso cref="T:System.Windows.Forms.Form" />
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.SelectItemFromListBox.#ctor">
+            <summary>
+            call from static showdialog
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.SelectItemFromListBox.ShowDialog(System.String,System.String,System.Collections.Generic.List{ANDREICSLIB.NewControls.SelectItemFromListBox.SelectItem},System.Boolean,System.Int32)">
+            <summary>
+            return selected values after dialog closes. if canceled, will return null
+            </summary>
+            <param name="labelText">The label text.</param>
+            <param name="title">The title.</param>
+            <param name="listBoxItems">The list box items.</param>
+            <param name="multiselect">if set to <c>true</c> [multiselect].</param>
+            <param name="mustSelectCountIN">The must select count in.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.SelectItemFromListBox.okbutton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Click event of the okbutton control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.SelectItemFromListBox.cancelbutton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Click event of the cancelbutton control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.SelectItemFromListBox.selectItemFromListBox_Load(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Load event of the selectItemFromListBox control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.SelectItemFromListBox.selectItemFromListBox_SizeChanged(System.Object,System.EventArgs)">
+            <summary>
+            Handles the SizeChanged event of the selectItemFromListBox control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="T:ANDREICSLIB.NewControls.SelectItemFromListBox.SelectItem">
+            <summary>
+            not a control
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.NewControls.SelectItemFromListBox.SelectItem.Preselected">
+            <summary>
+            The preselected
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.NewControls.SelectItemFromListBox.SelectItem.Text">
+            <summary>
+            The text
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.SelectItemFromListBox.SelectItem.#ctor(System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ANDREICSLIB.NewControls.SelectItemFromListBox.SelectItem"/> class.
+            </summary>
+            <param name="text">The text.</param>
+            <param name="isSelected">if set to <c>true</c> [is selected].</param>
+        </member>
+        <member name="F:ANDREICSLIB.NewControls.SelectItemFromListBox.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.SelectItemFromListBox.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.SelectItemFromListBox.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:ANDREICSLIB.NewControls.UnselectableRichTextBox">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:System.Windows.Forms.RichTextBox" />
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.UnselectableRichTextBox.UnselectableTextBox">
+            <summary>
+            Unselectables the text box.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.UnselectableRichTextBox.OnGotFocus(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:GotFocus" /> event.
+            </summary>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:ANDREICSLIB.NewControls.UnselectableRichTextBox.WndProc(System.Windows.Forms.Message@)">
+            <summary>
+            WNDs the proc.
+            </summary>
+            <param name="m">The m.</param>
+        </member>
+        <member name="T:ANDREICSLIB.ClassReplacements.PanelReplacement">
+            <summary>
+                example usage: https://github.com/andreigec/XQueens
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.ClassReplacements.PanelReplacement.SetGapBetweenItems(System.Int32)">
+            <summary>
+            Sets the gap between items.
+            </summary>
+            <param name="val">The value.</param>
+        </member>
+        <member name="M:ANDREICSLIB.ClassReplacements.PanelReplacement.GetControlStack">
+            <summary>
+            Gets the control stack.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassReplacements.PanelReplacement.FitPanel(System.Windows.Forms.Control,System.Windows.Forms.Control,System.Int32,System.Int32)">
+            <summary>
+            make sure the panel fits all the controls in it
+            </summary>
+            <param name="resize">The resize.</param>
+            <param name="checkControls">The check controls.</param>
+            <param name="extrawidth">The extrawidth.</param>
+            <param name="extraheight">The extraheight.</param>
+        </member>
+        <member name="M:ANDREICSLIB.ClassReplacements.PanelReplacement.RemoveControl(System.String)">
+            <summary>
+            Removes the control.
+            </summary>
+            <param name="name">The name.</param>
+        </member>
+        <member name="M:ANDREICSLIB.ClassReplacements.PanelReplacement.ClearControls">
+            <summary>
+            Clears the controls.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.ClassReplacements.PanelReplacement.SwitchControlLocations(System.Int32,System.Int32)">
+            <summary>
+            Switches the control locations.
+            </summary>
+            <param name="indexone">The indexone.</param>
+            <param name="indextwo">The indextwo.</param>
+        </member>
+        <member name="M:ANDREICSLIB.ClassReplacements.PanelReplacement.SwapControls(System.Windows.Forms.Control,System.Windows.Forms.Control)">
+            <summary>
+            Swaps the controls.
+            </summary>
+            <param name="one">The one.</param>
+            <param name="two">The two.</param>
+        </member>
+        <member name="M:ANDREICSLIB.ClassReplacements.PanelReplacement.AddControl(System.Windows.Forms.Control,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            Adds the control.
+            </summary>
+            <param name="C">The c.</param>
+            <param name="nextItemOnSameLine">if set to <c>true</c> [next item on same line].</param>
+            <param name="manualYAdd">The manual y add.</param>
+            <param name="manualXAdd">The manual x add.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassReplacements.PanelReplacement.GetControlByName(System.String)">
+            <summary>
+            Gets the name of the control by.
+            </summary>
+            <param name="name">The name.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassReplacements.PanelReplacement.Clone">
+            <summary>
+            Clones this instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.ClassReplacements.PanelReplacement.RemoveLastControl">
+            <summary>
+            Removes the last control.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.ClassReplacements.PanelReplacement.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ANDREICSLIB.ClassReplacements.PanelReplacement"/> class.
+            </summary>
+        </member>
+        <member name="P:ANDREICSLIB.ClassReplacements.PanelReplacement.BorderColour">
+            <summary>
+            Gets or sets the border colour.
+            </summary>
+            <value>
+            The border colour.
+            </value>
+        </member>
+        <member name="P:ANDREICSLIB.ClassReplacements.PanelReplacement.BorderWidth">
+            <summary>
+            Gets or sets the width of the border.
+            </summary>
+            <value>
+            The width of the border.
+            </value>
+        </member>
+        <member name="M:ANDREICSLIB.ClassReplacements.PanelReplacement.PushPosition">
+            <summary>
+            Pushes the position.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.ClassReplacements.PanelReplacement.PopPosition">
+            <summary>
+            Pops the position.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.ClassReplacements.PanelReplacement.BumpLastPosition(System.Int32,System.Int32)">
+            <summary>
+            Bumps the last position.
+            </summary>
+            <param name="x">The x.</param>
+            <param name="y">The y.</param>
+        </member>
+        <member name="M:ANDREICSLIB.ClassReplacements.PanelReplacement.SuspendPaint">
+            <summary>
+            Suspends the paint.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.ClassReplacements.PanelReplacement.ResumePaint">
+            <summary>
+            Resumes the paint.
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.ClassReplacements.PanelReplacement.SuspendPaint(System.Windows.Forms.Control)">
+            <summary>
+            Suspends the paint.
+            </summary>
+            <param name="control">The control.</param>
+        </member>
+        <member name="M:ANDREICSLIB.ClassReplacements.PanelReplacement.ResumePaint(System.Windows.Forms.Control)">
+            <summary>
+            Resumes the paint.
+            </summary>
+            <param name="control">The control.</param>
+        </member>
+        <member name="T:ANDREICSLIB.Transformers.CsvExport">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.Transformers.CsvExport.fields">
+            <summary>
+            To keep the ordered list of column names
+            </summary>
+        </member>
+        <member name="F:ANDREICSLIB.Transformers.CsvExport.rows">
+            <summary>
+                The list of rows
+            </summary>
+        </member>
+        <member name="P:ANDREICSLIB.Transformers.CsvExport.currentRow">
+            <summary>
+            The current row
+            </summary>
+            <value>
+            The current row.
+            </value>
+        </member>
+        <member name="P:ANDREICSLIB.Transformers.CsvExport.Item(System.String)">
+            <summary>
+            Set a value on this column
+            </summary>
+            <value>
+            The <see cref="T:System.Object" />.
+            </value>
+            <param name="field">The field.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Transformers.CsvExport.AddRow">
+            <summary>
+            Call this before setting any fields on a row
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.Transformers.CsvExport.MakeValueCsvFriendly(System.Object)">
+            <summary>
+            Converts a value to how it should output in a csv file
+            If it has a comma, it needs surrounding with double quotes
+            Eg Sydney, Australia -&gt; "Sydney, Australia"
+            Also if it contains any double quotes ("), then they need to be replaced with quad quotes[sic] ("")
+            Eg "Dangerous Dan" McGrew -&gt; """Dangerous Dan"" McGrew"
+            </summary>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Transformers.CsvExport.Export(System.Boolean)">
+            <summary>
+            Output all rows as a CSV returning a string
+            </summary>
+            <param name="header">if set to <c>true</c> [header].</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Transformers.CsvExport.ExportToFile(System.String,System.Boolean,System.Nullable{System.Int32})">
+            <summary>
+            Exports to a file
+            </summary>
+            <param name="path">The path.</param>
+            <param name="header">if set to <c>true</c> [header].</param>
+            <param name="uniqueColumn">The unique column.</param>
+        </member>
+        <member name="T:ANDREICSLIB.Transformers.CSVTransform">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:ANDREICSLIB.Transformers.ITransform" />
+        </member>
+        <member name="M:ANDREICSLIB.Transformers.CSVTransform.Save(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Collections.Generic.List{System.String},System.Boolean,System.Nullable{System.Int32})">
+            <summary>
+            Saves the specified filename.
+            </summary>
+            <param name="filename">The filename.</param>
+            <param name="content">The content.</param>
+            <param name="startChildrenPoint">The start children point.</param>
+            <param name="header">if set to <c>true</c> [header].</param>
+            <param name="uniqueColumn">The unique column.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Transformers.CSVTransform.IsSimple(System.Object)">
+            <summary>
+            Determines whether the specified o is simple.
+            </summary>
+            <param name="o">The o.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Transformers.CSVTransform.PullOut``1(``0)">
+            <summary>
+            Pulls the out.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="a">a.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Transformers.CSVTransform.Load(System.String)">
+            <summary>
+            Loads the specified filename.
+            </summary>
+            <param name="filename">The filename.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ANDREICSLIB.Transformers.CSVTransform.CSVSplitRow(System.String)">
+            <summary>
+            CSVs the split row.
+            </summary>
+            <param name="s">The s.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ANDREICSLIB.Transformers.Result">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ANDREICSLIB.Transformers.Result.ErrorStatus">
+            <summary>
+            Gets or sets the error status.
+            </summary>
+            <value>
+            The error status.
+            </value>
+        </member>
+        <member name="P:ANDREICSLIB.Transformers.Result.Items">
+            <summary>
+            Gets or sets the items.
+            </summary>
+            <value>
+            The items.
+            </value>
+        </member>
+        <member name="P:ANDREICSLIB.Transformers.Result.Status">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:ANDREICSLIB.Transformers.Result"/> is status.
+            </summary>
+            <value>
+              <c>true</c> if status; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:ANDREICSLIB.Transformers.Result.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ANDREICSLIB.Transformers.Result"/> class.
+            </summary>
+        </member>
+        <member name="T:ANDREICSLIB.Transformers.ITransform">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ANDREICSLIB.Transformers.ITransform.Save(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Collections.Generic.List{System.String},System.Boolean,System.Nullable{System.Int32})">
+            <summary>
+            Saves the specified filename.
+            </summary>
+            <param name="filename">The filename.</param>
+            <param name="content">The content.</param>
+            <param name="startChildrenPoint">The start children point.</param>
+            <param name="header">if set to <c>true</c> [header].</param>
+            <param name="uniqueColumn">The unique column.</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,45 @@
+version: 1.0.{build}
+branches:
+  only:
+  - APPVEYOR
+shallow_clone: true
+os: Visual Studio 2015
+configuration: Release
+skip_tags: true
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}'
+before_build:
+- ps: >-
+    echo "nuget restore"
+
+    nuget restore
+build:
+  project: Word Find Solver.csproj
+  publish_nuget: false
+  parallel: true
+  verbosity: minimal
+after_build:
+- ps: >-
+    7z a WordFindSolver.zip .\bin\release
+after_test:
+- ps: "if ($env:APPVEYOR_REPO_BRANCH -eq \"DOCUMENTATION\")\n{\nif ((Test-Path(\"$env:SandCastleZipFile\")) -eq 0)\n{\necho \"Start-FileDownload\"\necho \"$env:SandCastleUri\"\necho \"$env:SandCastleZipFile\"\nmkdir \"$env:SandCastleBase\"\nInvoke-WebRequest \"$env:SandCastleUri\" -OutFile \"$env:SandCastleZipFile\"\n}\n\necho \"7z\"\ncd \"$env:SandCastleBase\"\n7z x \"$env:SandCastleZipFile\" -y\n\nif ((Test-Path(\"$env:SHFBTESTINSTALL\")) -eq 0)\n{\necho \"msiexec\"\nmsiexec /i \"$env:SHFBInstall\" /quiet /qn /norestart /log \"C:\\projects\\andrei\\install.log\"\nStart-Sleep -s 10\n}\n\nwhile ((Test-Path(\"$env:SHFBTESTINSTALL\")) -eq 0)\n{\necho \"Sleeping\"\nStart-Sleep -s 10\n}\n\necho \"SHFB run\"\ncd \"$env:ProjectBase\"\necho \"dir\"\ndir\nmsbuild proj.shfbproj /logger:\"C:\\Program Files\\AppVeyor\\BuildAgent\\Appveyor.MSBuildLogger.dll\" \n\nif ((Test-Path(\"$env:SHFBTEST\")) -eq 0)\n{\necho \"SHFB Fail\"\ncd \"C:\\projects\\andreicslib\\help\"\necho \"dir\"\ndir\nthrow \"SHFB Fail\"\n}\n\necho \"pack\"\n7z a documentation.zip \"C:\\projects\\andreicslib\\help\\*\"\n}"
+
+artifacts:
+- path: WordFindSolver.zip
+  name: WordFindSolver
+deploy:
+  release: WordFindSolver-v$(appveyor_build_version)
+  description: '$(APPVEYOR_REPO_COMMIT_AUTHOR) - $(APPVEYOR_REPO_COMMIT_MESSAGE)'
+  provider: GitHub
+  auth_token:
+    secure: iMD2xJGiQSxN9K6L5kArtXJCkexP8VZoUoLJFMyzrl1rGH2DAxJ9FJoeehcv1Ml0
+  artifact: WordFindSolver
+  draft: false
+  prerelease: false
+  on:
+    branch: APPVEYOR
+

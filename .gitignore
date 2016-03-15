@@ -1,5 +1,3 @@
-
-/SOURCE/Word Find Solver.6.0.ReSharper.user
-/SOURCE/_ReSharper.Word Find Solver
-/SOURCE/Word Find Solver/obj
-/SOURCE/Word Find Solver/bin
+*.suo
+bin
+obj
