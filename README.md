@@ -5,6 +5,5 @@ Also contains a mode that can be used to solve the game "SpellTower", where word
 
 Images
 ======
-![wfs1](https://s3-ap-southeast-2.amazonaws.com/andreigec/Word-Find-Solver/wfs1.png)
-
-![wfs2](https://s3-ap-southeast-2.amazonaws.com/andreigec/Word-Find-Solver/wfs2.png)
+![wfs1](https://cloud.githubusercontent.com/assets/1860848/15065449/154471aa-13a3-11e6-92f9-b6b72f51897c.png)
+![wfs2](https://cloud.githubusercontent.com/assets/1860848/15065450/157017f6-13a3-11e6-929c-670aec1c9101.png)
